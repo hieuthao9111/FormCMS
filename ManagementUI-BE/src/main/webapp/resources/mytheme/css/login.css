@@ -1,0 +1,13 @@
+body { 
+  background: url(http://media.dcentertainment.com/sites/default/files/Desktop-Marquee_Keyart%2BLogo_CROP-POST-LAUNCH_581a86fd201643.68474742_581abbcea0b2b1.16286045.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.panel-default {
+opacity: 0.9;
+margin-top:30px;
+}
+.form-group.last { margin-bottom:0px; }
