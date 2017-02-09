@@ -3,59 +3,160 @@
 <html>
 <head>
 <c:import url="header1.jsp" />
-    <meta charset="UTF-8">
-    <title>Simple jQuery Form Builder - Demo</title>
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-
-    <!-- CSS -->
-    <link href="<c:url value="/resources/mytheme/css/style.css" />"
-	rel="stylesheet">
-
-    <!-- Jquery JS -->
-    <script src="/resources/mytheme/js/jquery-2.1.4.min.js" type="text/javascript"></script> <!-- jQuery v1 should also work fine -->
-    <script src="/resources/mytheme/js/jquery-ui.min.js" type="text/javascript" ></script> <!-- for sortable -->
-
-    <!-- SJFB JS -->
-    <script src="/resources/mytheme/js/sjfb-builder.js" type="text/javascript" ></script> <!-- form builder -->
-    <script src="/resources/mytheme/js/sjfb-html-generator.js" type="text/javascript" ></script> <!-- form generator -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Droppable - Simple photo manager</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/mytheme/css/style.css">
+  <style>
+  #gallery { float: left; width: 0; min-height: 12em; margin: 10px}
+  .gallery.custom-state-active { background: red; }
+  .gallery li { float: left; width: 96px; padding: 0.4em; margin: 0 0.4em 0.4em 0; text-align: center; }
+  .gallery li h5 { margin: 0 0 0.4em; cursor: move; }
+  .gallery li a { float: right; }
+  .gallery li a.ui-icon-zoomin { float: left; }
+  .gallery li img { width: 100%; cursor: move; }
+ 
+  #trash { float: right; width: 50%; min-height: 18em; padding: 1%; margin: 10px }
+  #trash h4 { line-height: 16px; margin: 0 0 0.4em; }
+  #trash h4 .ui-icon { float: left; }
+  #trash .gallery h5 { display: none; }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+ 
+    // There's the gallery and the trash
+    var $gallery = $( "#gallery" ),
+      $trash = $( "#trash" );
+ 
+    // Let the gallery items be draggable
+    $( "li", $gallery ).draggable({
+      cancel: "a.ui-icon", // clicking an icon won't initiate dragging
+      revert: "invalid", // when not dropped, the item will revert back to its initial position
+      containment: "document",
+      helper: "clone",
+      cursor: "move"
+    });
+ 
+    // Let the trash be droppable, accepting the gallery items
+    $trash.droppable({
+      accept: "#gallery > li",
+      classes: {
+        "ui-droppable-active": "ui-state-highlight"
+      },
+      drop: function( event, ui ) {
+        deleteImage( ui.draggable );
+      }
+    });
+ 
+    // Let the gallery be droppable as well, accepting items from the trash
+    $gallery.droppable({
+      accept: "#trash li",
+      classes: {
+        "ui-droppable-active": "custom-state-active"
+      },
+      drop: function( event, ui ) {
+        recycleImage( ui.draggable );
+      }
+    });
+ 
+    // Image deletion function
+    var recycle_icon = "<a href='link/to/recycle/script/when/we/have/js/off' title='Recycle this image' class='ui-icon ui-icon-refresh'>Recycle image</a>";
+    function deleteImage( $item ) {
+      $item.fadeOut(function() {
+        var $list = $( "ul", $trash ).length ?
+          $( "ul", $trash ) :
+          $( "<ul class='gallery ui-helper-reset'/>" ).appendTo( $trash );
+ 
+        $item.find( "a.ui-icon-trash" ).remove();
+        $item.append( recycle_icon ).appendTo( $list ).fadeIn(function() {
+          $item
+            .animate({ width: "500px" })
+            .find( "img" )
+              .animate({ height: "100px" });
+        });
+      });
+    }
+ 
+    // Image recycle function
+    var trash_icon = "<a href='link/to/trash/script/when/we/have/js/off' title='Delete this image' class='ui-icon ui-icon-trash'>Delete image</a>";
+    function recycleImage( $item ) {
+      $item.fadeOut(function() {
+        $item
+          .find( "a.ui-icon-refresh" )
+            .remove()
+          .end()
+          .css( "width", "500px")
+          .append( trash_icon )
+          .find( "img" )
+            .css( "height", "100px" )
+          .end()
+          .appendTo( $gallery )
+          .fadeIn();
+      });
+    }
+ 
+    // Image preview function, demonstrating the ui.dialog used as a modal window
+    /* function viewLargerImage( $link ) {
+      var src = $link.attr( "href" ),
+        title = $link.siblings( "img" ).attr( "alt" ),
+        $modal = $( "img[src$='" + src + "']" );
+ 
+      if ( $modal.length ) {
+        $modal.dialog( "open" );
+      } else {
+        var img = $( "<img alt='" + title + "' width='384' height='288' style='display: none; padding: 8px;' />" )
+          .attr( "src", src ).appendTo( "body" );
+        setTimeout(function() {
+          img.dialog({
+            title: title,
+            width: 400,
+            modal: true
+          });
+        }, 1 );
+      }
+    } */
+ 
+    // Resolve the icons behavior with event delegation
+    $( "ul.gallery > li" ).on( "click", function( event ) {
+      var $item = $( this ),
+        $target = $( event.target );
+ 
+      if ( $target.is( "a.ui-icon-trash" ) ) {
+        deleteImage( $item );
+      } else if ( $target.is( "a.ui-icon-zoomin" ) ) {
+        viewLargerImage( $target );
+      } else if ( $target.is( "a.ui-icon-refresh" ) ) {
+        recycleImage( $item );
+      }
+ 
+      return false;
+    });
+  } );
+  </script>
 </head>
-<body id="sjfb-body">
+<body>
 
 
-<div id="sjfb-wrap">
+<div style="background-color: white; width: 100%;">
+<div class="ui-widget ui-helper-clearfix">
+<ul id="gallery" class="gallery ui-helper-reset ui-helper-clearfix" >
+        <li style="width:500px;text-align: left " class="list-group-item list-group-item-success"><label>Choice:<input type="text" class="choice-label"></label><label>Selected?<input class="toggle-selected" type="checkbox"></label>
+        <button type="button" class="delete">Delete Choice</button></li>
+        <li style="width:500px; text-align: left" class="list-group-item list-group-item-success"><label>Choice:<input type="text" class="choice-label"></label></li>
+        <li style="width:500px; text-align: left" class="list-group-item list-group-item-success"><textarea class="form-control" rows="3"></textarea></li>
+        <li style="width:500px; text-align: left" class="list-group-item list-group-item-success"><label>Check box <input type="checkbox" id="blankCheckbox" value="option1" aria-label="..."></label></li>
+        <li style="width:500px; text-align: left" class="list-group-item list-group-item-success"><label>Check box <input type="checkbox" id="blankCheckbox" value="option1" aria-label="..."></label></li>
+        <li style="width:500px; text-align: left" class="list-group-item list-group-item-success"><label>Check box <input type="checkbox" id="blankCheckbox" value="option1" aria-label="..."></label></li>
+</ul>
 
-    <h1>Form Buider</h1>
 
-    <p>Product by ThaoVH1<br>
-        <a href="form.html">View form (rendered from the demo json string) here</a>.
-    </p>
-
-    <div class="alert hide">
-        <h2>Success! Form saved.</h2>
-        <p>Here is what your saved form will look like in your database:</p>
-        <textarea></textarea>
-    </div>
-
-    <div class="add-wrap">
-        <h3>Add Field:</h3>
-        <ul id="add-field">
-            <li><button type="button" class="btn btn-info btn-block" id="add-text" data-type="text">Single Line Text</button></li>
-            <li><button type="button" class="btn btn-info btn-block" id="add-textarea" data-type="textarea">Multi Line Text</button></li>
-            <li><button type="button" class="btn btn-info btn-block" id="add-select" data-type="select">Select Box (Drop down list)</button></li>
-            <li><button type="button" class="btn btn-info btn-block" id="add-radio" data-type="radio">Radio Buttons</button></li>
-            <li><button type="button" class="btn btn-info btn-block" id="add-checkbox" data-type="checkbox">Checkboxes</button></li>
-            <li><button type="button" class="btn btn-info btn-block" id="add-agree" data-type="agree">Agree Box</button></li>
-            <!-- <li><button type="button" class="btn btn-info btn-block"><a id="add-agree" data-type="agree">Agree Box</a></button></li> -->
-        </ul>
-    </div>
-
-    <form id="sjfb" novalidate>
-        <div id="form-fields">
-        </div>
-        <button type="submit" class="submit">Save Form</button>
-    </form>
-
+<div id="trash" class="ui-widget-content ui-state-default">
+  <h4 class="ui-widget-header"><span class="ui-icon ui-icon-trash">Trash</span> Trash</h4>
 </div>
-
+ 
+</div>
+</div>
 </body>
 </html>

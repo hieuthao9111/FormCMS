@@ -1,29 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jQuery UI Droppable - Simple photo manager</title>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <style>
-  #gallery { float: left; width: 65%; min-height: 12em; }
-  .gallery.custom-state-active { background: #eee; }
-  .gallery li { float: left; width: 96px; padding: 0.4em; margin: 0 0.4em 0.4em 0; text-align: center; }
-  .gallery li h5 { margin: 0 0 0.4em; cursor: move; }
-  .gallery li a { float: right; }
-  .gallery li a.ui-icon-zoomin { float: left; }
-  .gallery li img { width: 100%; cursor: move; }
- 
-  #trash { float: right; width: 32%; min-height: 18em; padding: 1%; }
-  #trash h4 { line-height: 16px; margin: 0 0 0.4em; }
-  #trash h4 .ui-icon { float: left; }
-  #trash .gallery h5 { display: none; }
-  </style>
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
+$( function() {
  
     // There's the gallery and the trash
     var $gallery = $( "#gallery" ),
@@ -133,27 +108,3 @@
       return false;
     });
   } );
-  </script>
-</head>
-<body>
- 
-<div class="ui-widget ui-helper-clearfix">
- 
-<ul id="gallery" class="gallery ui-helper-reset ui-helper-clearfix">
-  <li><button type="button" class="btn btn-info btn-block" id="add-text" data-type="text">Single Line Text</button></li>
-            <li><button type="button" class="btn btn-info btn-block" id="add-textarea" data-type="textarea">Multi Line Text</button></li>
-            <li><button type="button" class="btn btn-info btn-block" id="add-select" data-type="select">Select Box (Drop down list)</button></li>
-            <li><button type="button" class="btn btn-info btn-block" id="add-radio" data-type="radio">Radio Buttons</button></li>
-            <li><button type="button" class="btn btn-info btn-block" id="add-checkbox" data-type="checkbox">Checkboxes</button></li>
-            <li><button type="button" class="btn btn-info btn-block" id="add-agree" data-type="agree">Agree Box</button></li>
-</ul>
- 
-<div id="trash" class="ui-widget-content ui-state-default">
-  <h4 class="ui-widget-header"><span class="ui-icon ui-icon-trash">Trash</span> Trash</h4>
-</div>
- 
-</div>
- 
- 
-</body>
-</html>

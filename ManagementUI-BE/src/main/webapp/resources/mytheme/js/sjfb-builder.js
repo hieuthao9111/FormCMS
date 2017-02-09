@@ -15,8 +15,17 @@ $(function(){
         event.preventDefault();
         $(addField($(this).data('type'))).appendTo('#form-fields').hide().slideDown('fast');
         $('#form-fields').sortable();
+        $( "li").draggable({
+            cancel: "a.ui-icon", // clicking an icon won't initiate dragging
+            revert: "invalid", // when not dropped, the item will revert back to its initial position
+            containment: "document",
+            helper: "clone",
+            cursor: "move"
+          });
     });
 
+    
+    
     //Removes fields and choices with animation
     $("#sjfb").on("click", ".delete", function() {
         if (confirm('Are you sure?')) {
