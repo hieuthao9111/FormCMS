@@ -130,6 +130,6 @@ public class UserController {
 	}
 	@RequestMapping(value = "/index2")
 	public ModelAndView form() {
-		return new ModelAndView("index2");
+		return new ModelAndView("formCMS");
 	}
 }

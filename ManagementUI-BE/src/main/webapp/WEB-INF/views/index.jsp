@@ -30,14 +30,30 @@
     var $gallery = $( "#gallery" ),
       $trash = $( "#trash" );
  
-    // Let the gallery items be draggable
+      
     $( "li", $gallery ).draggable({
+
+	
       cancel: "a.ui-icon", // clicking an icon won't initiate dragging
       revert: "invalid", // when not dropped, the item will revert back to its initial position
       containment: "document",
       helper: "clone",
       cursor: "move"
-    });
+      
+    }
+
+);
+   
+    
+    /* $( "#gallery" ).sortable({
+        revert: true
+      });
+      $( "#draggable" ).draggable({
+        connectToSortable: "#gallery",
+        helper: "clone",
+        revert: "invalid"
+      });
+      $( "ul, li" ).disableSelection(); */
  
     // Let the trash be droppable, accepting the gallery items
     $trash.droppable({
@@ -45,23 +61,48 @@
       classes: {
         "ui-droppable-active": "ui-state-highlight"
       },
+      
       drop: function( event, ui ) {
-        deleteImage( ui.draggable );
+    	  if ($(ui.draggable).hasClass('new')) {
+              $('.new').draggable({
+                  revert: true
+              });
+          } else {
+              $(this).append($(ui.draggable).clone().draggable({
+                  helper: "original"
+              }).addClass('new'));
+          }
+      },
+      out: function (event, ui) {
+          $(ui.draggable).fadeOut(1000, function () {
+              $(this).remove();
+          });
       }
     });
  
     // Let the gallery be droppable as well, accepting items from the trash
-    $gallery.droppable({
+    /* $gallery.droppable({
       accept: "#trash li",
       classes: {
         "ui-droppable-active": "custom-state-active"
       },
-      drop: function( event, ui ) {
-        recycleImage( ui.draggable );
-      }
-    });
+    }); */
+    $('li.list-group-item list-group-item-success').click(function(){
+    	  $(this).remove();
+    	});
+ //make sure your DOM is ready
+    	$("li.list-group-item").click(function(){ // bind click on every div that has the class box
+    	    $(this).fadeOut(300, function(){ $(this).remove() }); //remove the clicked element from the dom
+    	});
  
-    // Image deletion function
+ 
+     /*  $( "#gallery" ).draggable({
+        connectToSortable: "#trash",
+        helper: "clone",
+        revert: "invalid"
+      }); */
+ 
+    /* // Image deletion function
     var recycle_icon = "<a href='link/to/recycle/script/when/we/have/js/off' title='Recycle this image' class='ui-icon ui-icon-refresh'>Recycle image</a>";
     function deleteImage( $item ) {
       $item.fadeOut(function() {
@@ -95,7 +136,7 @@
           .appendTo( $gallery )
           .fadeIn();
       });
-    }
+    } */
  
     // Image preview function, demonstrating the ui.dialog used as a modal window
     /* function viewLargerImage( $link ) {
@@ -118,7 +159,7 @@
       }
     } */
  
-    // Resolve the icons behavior with event delegation
+    /* // Resolve the icons behavior with event delegation
     $( "ul.gallery > li" ).on( "click", function( event ) {
       var $item = $( this ),
         $target = $( event.target );
@@ -132,7 +173,7 @@
       }
  
       return false;
-    });
+    }); */
   } );
   </script>
 </head>
@@ -142,18 +183,14 @@
 <div style="background-color: white; width: 100%;">
 <div class="ui-widget ui-helper-clearfix">
 <ul id="gallery" class="gallery ui-helper-reset ui-helper-clearfix" >
-        <li style="width:500px;text-align: left " class="list-group-item list-group-item-success"><label>Choice:<input type="text" class="choice-label"></label><label>Selected?<input class="toggle-selected" type="checkbox"></label>
-        <button type="button" class="delete">Delete Choice</button></li>
         <li style="width:500px; text-align: left" class="list-group-item list-group-item-success"><label>Choice:<input type="text" class="choice-label"></label></li>
-        <li style="width:500px; text-align: left" class="list-group-item list-group-item-success"><textarea class="form-control" rows="3"></textarea></li>
-        <li style="width:500px; text-align: left" class="list-group-item list-group-item-success"><label>Check box <input type="checkbox" id="blankCheckbox" value="option1" aria-label="..."></label></li>
-        <li style="width:500px; text-align: left" class="list-group-item list-group-item-success"><label>Check box <input type="checkbox" id="blankCheckbox" value="option1" aria-label="..."></label></li>
+        <li style="width:500px; text-align: left" class="list-group-item list-group-item-success"><label>Text area<textarea class="form-control" rows="3"></textarea></label></li>
         <li style="width:500px; text-align: left" class="list-group-item list-group-item-success"><label>Check box <input type="checkbox" id="blankCheckbox" value="option1" aria-label="..."></label></li>
 </ul>
 
 
 <div id="trash" class="ui-widget-content ui-state-default">
-  <h4 class="ui-widget-header"><span class="ui-icon ui-icon-trash">Trash</span> Trash</h4>
+  <h4 class="ui-widget-header"><span class="ui-icon ui-icon-trash">Form</span> Form</h4>
 </div>
  
 </div>
