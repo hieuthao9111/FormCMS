@@ -12,6 +12,7 @@ import javax.persistence.Table;
 public class Form {
 	private int id;
 	private String nameForm;
+	private String content;
 	
 	@Id
 	@Column(name="id")
@@ -28,6 +29,13 @@ public class Form {
 	}
 	public void setNameForm(String nameForm) {
 		this.nameForm = nameForm;
+	}
+	@Column(name="content")
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
 	}
 	public Form(int id, String nameForm) {
 		super();

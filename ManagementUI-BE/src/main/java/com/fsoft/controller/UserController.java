@@ -128,8 +128,8 @@ public class UserController {
 	public ModelAndView headerPage() {
 		return new ModelAndView("index");
 	}
-	@RequestMapping(value = "/index2")
+	/*@RequestMapping(value = "/index2")
 	public ModelAndView form() {
 		return new ModelAndView("formCMS");
-	}
+	}*/
 }

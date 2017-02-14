@@ -30,7 +30,17 @@
       
       Add your items here</li>
     </ul>
+    </div>
 </div>
+<div style="margin: 600px;"></div>
+<div >
+<label>Form Name</label>
+<input id="nameform" type="text" required></input><br>
 </div>
+<button>Result</button>
+<button id="save" class="btn btn-info" type="submit">Save</button>
+<!-- <div class="result"></div> -->
+<div id="123"></div>
+<button id="234">Render</button>
 </body>
 </html>
