@@ -2,12 +2,12 @@ body{font-family:verdana;font-size:12px;}
 h2 {padding:5px;background:#222;margin:0px;color:#fff;}
 ul,li{list-style:none;margin:0;padding:0;}
 
-.mn-items{display:block;clear:left;width:800px; float: left; margin-left: 40px;}
-.header-favorites{display:block;clear:right;width:1000px; float: right; margin-right: 40px;}
+.mn-items{display:block;width:310px; float: right; margin-right: 40px;}
+.header-favorites{display:block;width:310px; float: right; margin-right: 40px;}
 .mn-items li{background:#eee;padding:5px;cursor:pointer;margin-bottom:5px;position:relative;}
 
 /* .header-favorites {margin-top:20px;} */
-.header-favorites ul {margin:0;padding:0;background:#E1FFDF;clear:both;overflow:hidden;}
+.header-favorites ul {margin:0;padding:0;background:#E1FFDF;overflow:hidden;}
 .header-favorites ul li{position:relative;padding:10px;border-top:2px solid #fff;border-left:2px solid #000;cursor:pointer;}
 .header-favorites ul li:first-child{border-top:none;}
 

@@ -23,15 +23,11 @@
                                 <td>Rule</td>
                                 <td>{{rule}}</td>
                             </tr>
-
-                        
                         </tbody>
                     </table>
 
                 </div>
             </div>
         </div>
-        
-
     </div>
 </div>

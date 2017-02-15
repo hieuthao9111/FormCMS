@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,6 +27,7 @@ public class FormCMSController {
 		return new ModelAndView("formCMS");
 	}
 	@RequestMapping(value= "/addForm", method = RequestMethod.POST, produces = "application/json")
+	@ResponseBody
 	public Object addForm(@RequestBody Form form){
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("status", "ok");
@@ -38,9 +40,16 @@ public class FormCMSController {
 	public Map<String, Object> getAllForm(){
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("status", "ok");
-		result.put("form", formCMSService.getAllForm());
+		result.put("listForm", formCMSService.getAllForm());
 		return result;
-	} 
+	}
+	@RequestMapping(value = "/deleteForm/{id}", method = RequestMethod.DELETE)
+	@ResponseBody
+	public void deleteForm(@PathVariable("id") Long id) {
+		formCMSService.deleteFormById(id);
+	}
 
 
+	
+	
 }
