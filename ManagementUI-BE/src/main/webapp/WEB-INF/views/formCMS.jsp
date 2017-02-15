@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div>
-	<div id="listForm" class="col-xs-4"></div>
+	<div id="listForm" class="col-xs-5 col-sm-3"></div>
         <div id="tplList" style="display: none;">
             <table class="table table-striped">
                 <thead>
@@ -40,8 +40,36 @@
                 </tbody>
             </table>
         </div>
-        <div class="render"></div>
-        <div class="col-xs-8">
+        <div id="detailFormDialog" class="form-horizontal col-xs-5 col-sm-3">
+
+</div>
+<div id="detailFormTpl" style="display: none;">
+    <div class="panel panel-info">
+        <!--                    <div class="panel-heading">
+                                <h3 class="panel-title">Sheena Kristin A.Eschor</h3>
+                            </div>-->
+        <div class="panel-body">
+            <div class="row">
+                <div class=" col-md-9 col-lg-12 "> 
+                    <table class="table table-user-information">
+                        <tbody>
+                            <tr>
+                                <td>Name</td>
+                                <td>{{nameForm}}</td>
+                            </tr>
+                            <tr>
+                                <td>Content</td>
+                                <td id="noidung">{{content}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="col-xs-6 col-sm-6">
 		<div class="header-favorites">
 			<h2>Drop Form Here...</h2>
 			<ul class="h-droped-list">
@@ -58,9 +86,9 @@
 			<h2>Form</h2>
 			<div id="catalog">
 				<ul class="rp-draggable">
-					<li class="list-group-item list-group-item-success"><label>Text:<input
+					<li class="list-group-item list-group-item-success"><label id="item">Text:<input
 							type="text" class="form-control"></label><i class="fa fa-star-o"></i></li>
-					<li class="list-group-item list-group-item-success"><label>Text
+					<li class="list-group-item list-group-item-success"><label id="item">Text
 							area<textarea class="form-control"></textarea>
 					</label><i class="fa fa-star-o"></i></li>
 					<li class="list-group-item list-group-item-success"><label>Password<input
@@ -84,9 +112,9 @@
 	</div>
 	<!-- <div style="margin: 600px;"></div> -->
 	
-	<!-- <div class="result"></div> -->
-	<!-- <div id="123"></div>
-	<button id="234">Render</button> -->
+	<div class="result"></div>
+	<div id="123"></div>
+	<button id="234">Render</button>
 
 	<!-- dialog -->
 	<!-- Modal -->
@@ -128,5 +156,6 @@
 
 		</div>
 	</div>
+	<c:import url="detailForm.jsp" />
 </body>
 </html>

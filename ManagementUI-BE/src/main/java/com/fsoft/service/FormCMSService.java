@@ -24,5 +24,7 @@ public class FormCMSService {
 	public void deleteFormById(Long id){
 		formCMSdao.delete(id);
 	}
-
+	public Form getFormById(Long id){
+		return formCMSdao.findOne(id);
+	}
 }

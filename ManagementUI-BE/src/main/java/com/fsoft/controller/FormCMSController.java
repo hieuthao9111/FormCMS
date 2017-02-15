@@ -48,6 +48,12 @@ public class FormCMSController {
 	public void deleteForm(@PathVariable("id") Long id) {
 		formCMSService.deleteFormById(id);
 	}
+	@RequestMapping(value = "/detailForm/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public Form getFormById(@PathVariable("id") Long id) {
+		return formCMSService.getFormById(id);
+	}
+	
 
 
 	

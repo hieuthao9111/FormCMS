@@ -43,11 +43,11 @@ $(document).ready(
 						$(this).closest('li').remove();
 					});
 			
-			$("button").click(function() {
+			/*$("button").click(function() {
 				  var table = $(".h-droped-list").html();
 				  $(".result").html(table);
 				  
-				});
+				});*/
 			
 			
 			
@@ -126,12 +126,57 @@ $(document).ready(
 			        data:$('.ab').html() 
 			    }));*/
 				});
-			$("#btnDetailForm").click(function(){
-				var content = 
-				$('.render').text(JSON.stringify({ 
-			        data:$('#contentForm').html() 
-			    }));
-			});
+			$(".btnDetailForm").click(function(){
+	            var id = $(this).data("id");
+	            $.ajax({
+	                dataType: "json",
+	                type: 'GET',
+	                /*data : JSON.stringify({
+						"id" : id,
+					}),*/
+	                url: "/ManagementUI-BE/detailForm/" + id,
+	                contentType : "application/json",
+	                success: function (data) {
+	                    var template = $('#detailFormTpl').html();
+	                    var html = Mustache.render(template, data);
+	                    $('#detailFormDialog').html(html);
+	                    var a=$('#noidung');
+	    				a.wrap('<span class="ab"></span>');
+	    				$('#detailFormDialog').text(JSON.stringify({ 
+	    			        data:$('.ab').html() 
+	    			    }));
+	    				/*$("#234").click(function(){
+	    					var a=$('#detailFormDialog');
+	    					a.wrap('<span class="ab"></span>');
+	    					var b=($('.ab').html());
+	    				    $("#123").append(b);
+	    				});*/
+	                   /* $("#detailFormDialog" ).dialog({
+	                    	title: "Detail Form",
+	                        show: {
+	                            effect: "blind",
+	                            duration: 1000
+	                        },
+	                        height: 500,
+	                        width: 750,
+	                        modal: true,
+	                        buttons: {
+	                            
+	                            Cancel: function() {
+	                                $( "#detailFormDialog" ).dialog( "close" );
+	                            }
+	                        },
+	                        hide: {
+	                            effect: "explode",
+	                            duration: 1000
+	                        }
+	                    });*/
+	                },
+	                error: function (data) {
+	    
+	                }
+	            });
+	        });
 			}
 			function reload() {
 				$.ajax({
