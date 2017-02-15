@@ -21,7 +21,6 @@
 <script src="<c:url value="/resources/mytheme/js/bootstrap.min.js" />"></script>
 <script src="<c:url value="/resources/mytheme/js/jquery-ui.min.js" />"></script>
 <script src="<c:url value="../resources/mytheme/js/project.js" />"></script>
-<script src="<c:url value="../resources/mytheme/js/formcms.js" />"></script>
 
 
 <body>
