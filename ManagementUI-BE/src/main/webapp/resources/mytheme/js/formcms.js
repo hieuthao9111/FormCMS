@@ -1,12 +1,5 @@
 $(document).ready(
 		function() {
-			var listUser = [];
-			function formatList(list) {
-				$.each(list, function(i, value) {
-					value.index = i + 1;
-				});
-				
-			}
 
 			/* jQuery Droppable */
 			$(function() {
@@ -50,50 +43,9 @@ $(document).ready(
 				});
 			
 			
-			
 
-				
-				
-			function render(){
-				$("#234").click(function(){
-					var a=$('.result');
-					a.wrap('<span class="ab"></span>');
-					var b=($('.ab').html());
-				    $("#123").append(b);
-				});
-			}
-			function action() {
-			$(".btnDeleteForm").click(function() {
-				var id = $(this).data("id");
-				// console.log("staffId:" +staffId);
-				// console.log("projectId:" +projectId);
-				if (confirm("do you want to remove this form?")) {
-					$.ajax({
-						dataType : "json",
-						type : 'DELETE',
-						data : JSON.stringify({
-							"id" : id,
-						}),
-						contentType : "application/json",
-						url : "/ManagementUI-BE/deleteForm/"+id,
-						success : function(data) {
-							
-						},
-						error : function(data) {
-
-						}
-					});
-				}
-				reload();
-			});
-			$("#addForm").click(function() {
-				
-				var nameForm= $("#nameform").val();
-				if(nameForm == null || nameForm== ''){
-					//alert("Input name form !");
-					$('#myModal1').modal('show');
-					//$('#myModal').modal('toggle');
-				}else{
+				$("#save").click(function() {
+					var nameForm= $("#nameform").val();
 					var a=$('.h-droped-list');
 					a.wrap('<span class="ab"></span>');
 					var form=($('.ab').html());
@@ -108,47 +60,31 @@ $(document).ready(
                         contentType : "application/json",
                         url: "/ManagementUI-BE/addForm",
                         success: function (data) {
-                            //alert("Create project successfull");
-                        	$('#myModal').modal('show');
-                        	reload();
+                        	var  a =data;
+                            alert("Create project successfull");
                         },
                         error: function (data) {
 
                         }
                     });
-				}
-				
-				/*var a=$('.result');
-				a.wrap('<span class="ab"></span>');
-				alert($('.ab').html());
-				
-				$('.result').text(JSON.stringify({ 
-			        data:$('.ab').html() 
-			    }));*/
-				});
-			$("#btnDetailForm").click(function(){
-				var content = 
-				$('.render').text(JSON.stringify({ 
-			        data:$('#contentForm').html() 
-			    }));
-			});
-			}
-			function reload() {
-				$.ajax({
-					dataType : "json",
-					type : 'GET',
-					url : "/ManagementUI-BE/listForm",
-					contentType : "application/json",
-					success : function(data) {
-						formatList(data.listForm);
-						var template = $('#tplList').html();
-						var html = Mustache.render(template, data);
-						$('#listForm').html(html);
-						action();
-					},
-					error : function(data) {
-					}
+					
+					
+					
+					/*var a=$('.result');
+					a.wrap('<span class="ab"></span>');
+					alert($('.ab').html());
+					
+					$('.result').text(JSON.stringify({ 
+				        data:$('.ab').html() 
+				    }));*/
+					});
+			function render(){
+				$("#234").click(function(){
+					var a=$('.result');
+					a.wrap('<span class="ab"></span>');
+					var b=($('.ab').html());
+				    $("#123").append(b);
 				});
 			}
-			reload();
+
 		});

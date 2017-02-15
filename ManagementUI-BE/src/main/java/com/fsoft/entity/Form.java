@@ -10,17 +10,17 @@ import javax.persistence.Table;
 @Entity
 @Table(name="form")
 public class Form {
-	private Long id;
+	private int id;
 	private String nameForm;
 	private String content;
 	
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	@Column(name="nameForm")
@@ -37,7 +37,7 @@ public class Form {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Form(Long id, String nameForm) {
+	public Form(int id, String nameForm) {
 		super();
 		this.id = id;
 		this.nameForm = nameForm;
