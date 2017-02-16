@@ -7,8 +7,8 @@
 <script src="<c:url value="../resources/mytheme/js/formcms.js" />"></script>
 </head>
 <body>
-	<div>
-	<div id="listForm" class="col-xs-5 col-sm-3"></div>
+	<div class="row">
+	<div class="col-xs-4 col-md-3"><h2>List Form</h2><div id="listForm"></div></div>
         <div id="tplList" style="display: none;">
             <table class="table table-striped">
                 <thead>
@@ -40,9 +40,8 @@
                 </tbody>
             </table>
         </div>
-        <div id="detailFormDialog" class="form-horizontal col-xs-5 col-sm-3">
-
-</div>
+        
+        <div class="col-xs-6 col-md-3"><h2>Content</h2><div id="detailFormDialog" class="form-horizontal"></div></div>
 <div id="detailFormTpl" style="display: none;">
     <div class="panel panel-info">
         <!--                    <div class="panel-heading">
@@ -55,10 +54,10 @@
                         <tbody>
                             <tr>
                                 <td>Name</td>
-                                <td>{{nameForm}}</td>
+                                <td>Content</td>
                             </tr>
                             <tr>
-                                <td>Content</td>
+                                <td>{{nameForm}}</td>
                                 <td id="noidung">{{content}}</td>
                             </tr>
                         </tbody>
@@ -69,26 +68,13 @@
         </div>
     </div>
 </div>
-        <div class="col-xs-6 col-sm-6">
-		<div class="header-favorites">
-			<h2>Drop Form Here...</h2>
-			<ul class="h-droped-list">
-				<li class="placeholder"><br> Add your items here</li>
-			</ul>
-			<div class="row">
-			<div class="col-md-12"><label for="nameform">Form Name</label></div>
-			<div class="col-md-12"><input type="text" class="form-control col-md-6" id="nameform"></input></div>
-			<div class="col-md-12" style="margin: 2px;"><button id="addForm" class="btn btn-info" type="submit">Save</button></div>
-		</div>
-		</div>
-		
-		<div class="mn-items">
+		<div class="mn-items col-xs-6 col-md-3">
 			<h2>Form</h2>
 			<div id="catalog">
 				<ul class="rp-draggable">
-					<li class="list-group-item list-group-item-success"><label id="item">Text:<input
-							type="text" class="form-control"></label><i class="fa fa-star-o"></i></li>
-					<li class="list-group-item list-group-item-success"><label id="item">Text
+					<li class="list-group-item list-group-item-success"><label>Text:<input
+							type="text" class="form-control" id="textForm" value=''></label><i class="fa fa-star-o"></i></li>
+					<li class="list-group-item list-group-item-success"><label>Text
 							area<textarea class="form-control"></textarea>
 					</label><i class="fa fa-star-o"></i></li>
 					<li class="list-group-item list-group-item-success"><label>Password<input
@@ -107,14 +93,25 @@
 				</ul>
 			</div>
 		</div>
+		<div class="header-favorites col-xs-6 col-md-3">
+			<h2>Drop Form Here...</h2>
+			<ul class="h-droped-list">
+				<li class="placeholder"><br> Add your items here</li>
+			</ul>
+			<div class="row">
+				<div class="col-md-12"><label for="nameform">Form Name</label></div>
+				<div class="col-md-12"><input type="text" class="form-control col-md-6" id="nameform"></input></div>
+				<div class="col-md-12" style="margin: 2px;"><button id="addForm" class="btn btn-info" type="submit">Save</button></div>
+			</div>
 		</div>
 
 	</div>
 	<!-- <div style="margin: 600px;"></div> -->
 	
-	<div class="result"></div>
-	<div id="123"></div>
+	<div id="result"></div>
+	<div id="123" class="h-droped-list ui-droppable ui-sortable"></div>
 	<button id="234">Render</button>
+	
 
 	<!-- dialog -->
 	<!-- Modal -->

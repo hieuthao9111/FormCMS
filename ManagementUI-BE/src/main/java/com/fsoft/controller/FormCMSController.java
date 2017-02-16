@@ -45,8 +45,8 @@ public class FormCMSController {
 	}
 	@RequestMapping(value = "/deleteForm/{id}", method = RequestMethod.DELETE)
 	@ResponseBody
-	public void deleteForm(@PathVariable("id") Long id) {
-		formCMSService.deleteFormById(id);
+	public boolean deleteForm(@PathVariable("id") Long id) {
+		return formCMSService.deleteFormById(id);
 	}
 	@RequestMapping(value = "/detailForm/{id}", method = RequestMethod.GET)
 	@ResponseBody

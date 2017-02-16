@@ -48,20 +48,7 @@ $(document).ready(
 				  $(".result").html(table);
 				  
 				});*/
-			
-			
-			
 
-				
-				
-			function render(){
-				$("#234").click(function(){
-					var a=$('.result');
-					a.wrap('<span class="ab"></span>');
-					var b=($('.ab').html());
-				    $("#123").append(b);
-				});
-			}
 			function action() {
 			$(".btnDeleteForm").click(function() {
 				var id = $(this).data("id");
@@ -77,14 +64,16 @@ $(document).ready(
 						contentType : "application/json",
 						url : "/ManagementUI-BE/deleteForm/"+id,
 						success : function(data) {
-							
+							reload();
 						},
 						error : function(data) {
 
 						}
+						
 					});
+					
 				}
-				reload();
+				
 			});
 			$("#addForm").click(function() {
 				
@@ -140,11 +129,13 @@ $(document).ready(
 	                    var template = $('#detailFormTpl').html();
 	                    var html = Mustache.render(template, data);
 	                    $('#detailFormDialog').html(html);
-	                    var a=$('#noidung');
-	    				a.wrap('<span class="ab"></span>');
-	    				$('#detailFormDialog').text(JSON.stringify({ 
+	                    var d = $('#noidung');
+	    			    d.html(d.text());
+	                    
+	    				
+	    				/*$('#detailFormDialog').text(JSON.stringify({ 
 	    			        data:$('.ab').html() 
-	    			    }));
+	    			    }));*/
 	    				/*$("#234").click(function(){
 	    					var a=$('#detailFormDialog');
 	    					a.wrap('<span class="ab"></span>');
@@ -177,6 +168,17 @@ $(document).ready(
 	                }
 	            });
 	        });
+				$("#234").click(function(){
+					/*a.wrap('<span class="abc"></span>');
+					var b=($('.abc').html());*/
+					var a=$('#noidung');
+    				a.wrap('<span class="ab"></span>');
+    				var b=$('.ab').html();
+    				$("#123").append(b).html();
+    				/*var d = $('#noidung');
+    			    d.html(d.text());*/
+
+				});
 			}
 			function reload() {
 				$.ajax({
