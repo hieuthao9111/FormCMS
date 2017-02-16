@@ -79,11 +79,7 @@ public class UserController {
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	@ResponseBody
 	public boolean deleteUser(@PathVariable("id") Long id) {
-		
-		
-
 		return userservice.deleteById(id);
-		
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.PUT, produces = "application/json")

@@ -85,7 +85,7 @@ $(document).ready(
 				}else{
 					var a=$('.h-droped-list');
 					a.wrap('<span class="ab"></span>');
-					var form=($('.ab').html());
+					var form=$('.ab').html();
 					$.ajax({
                         dataType: "json",
                         type: 'POST',
@@ -98,13 +98,20 @@ $(document).ready(
                         url: "/ManagementUI-BE/addForm",
                         success: function (data) {
                             //alert("Create project successfull");
-                        	$('#myModal').modal('show');
-                        	reload();
+                        	
+                        	if($('#myModal').modal('show')){
+                        		setTimeout(function() {
+                        			 location.reload()
+                        			  },3000);
+                        	}else{alert("112");}
+                        	//reload();
                         },
                         error: function (data) {
 
                         }
+                        
                     });
+					
 				}
 				
 				/*var a=$('.result');

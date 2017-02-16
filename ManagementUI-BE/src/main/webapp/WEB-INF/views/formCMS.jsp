@@ -7,7 +7,9 @@
 <script src="<c:url value="../resources/mytheme/js/formcms.js" />"></script>
 </head>
 <body>
+
 	<div class="row">
+	<h1>FORM CMS</h1><br>
 	<div class="col-xs-4 col-md-3"><h2>List Form</h2><div id="listForm"></div></div>
         <div id="tplList" style="display: none;">
             <table class="table table-striped">
@@ -26,9 +28,9 @@
                         <td>{{nameForm}}</td>
                         <td id = "contentForm" style="display:none;">{{content}}</td>
                         <td>
-                            <button type="button" class="btn btn-primary btnDeleteForm" data-id="{{id}}">Delete</button>
-                            <button type="button" class="btn btn-primary btnEditUser" data-id="{{id}}">Edit</button>
-                            <button type="button" class="btn btn-primary btnDetailForm" data-id="{{id}}">View</button>
+                            <button type="button" class="btn btn-primary btn-xs btnDeleteForm" data-id="{{id}}">Delete</button>
+                            <button type="button" class="btn btn-primary btn-xs btnEditUser" data-id="{{id}}">Edit</button>
+                            <button type="button" class="btn btn-primary btn-xs btnDetailForm" data-id="{{id}}">View</button>
                         </td>
                     </tr>
                     <!--{{/listForm}}-->
