@@ -29,7 +29,7 @@
                         <td id = "contentForm" style="display:none;">{{content}}</td>
                         <td>
                             <button type="button" class="btn btn-primary btn-xs btnDeleteForm" data-id="{{id}}">Delete</button>
-                            <button type="button" class="btn btn-primary btn-xs btnEditUser" data-id="{{id}}">Edit</button>
+                            <button type="button" class="btn btn-primary btn-xs btnEditForm" data-id="{{id}}">Edit</button>
                             <button type="button" class="btn btn-primary btn-xs btnDetailForm" data-id="{{id}}">View</button>
                         </td>
                     </tr>
@@ -75,7 +75,7 @@
 			<div id="catalog">
 				<ul class="rp-draggable">
 					<li class="list-group-item list-group-item-success"><label>Text:<input
-							type="text" class="form-control" id="textForm" value=''></label><i class="fa fa-star-o"></i></li>
+							type="text" class="form-control"></label><i class="fa fa-star-o"></i></li>
 					<li class="list-group-item list-group-item-success"><label>Text
 							area<textarea class="form-control"></textarea>
 					</label><i class="fa fa-star-o"></i></li>
@@ -110,9 +110,10 @@
 	</div>
 	<!-- <div style="margin: 600px;"></div> -->
 	
-	<div id="result"></div>
+	<!-- <div id="result"></div>
 	<div id="123" class="h-droped-list ui-droppable ui-sortable"></div>
-	<button id="234">Render</button>
+	<button id="234">Render</button> -->
+	
 	
 
 	<!-- dialog -->
@@ -155,6 +156,6 @@
 
 		</div>
 	</div>
-	<c:import url="detailForm.jsp" />
+	<c:import url="editForm.jsp" />
 </body>
 </html>

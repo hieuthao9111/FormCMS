@@ -64,7 +64,7 @@ $(document).ready(
 						contentType : "application/json",
 						url : "/ManagementUI-BE/deleteForm/"+id,
 						success : function(data) {
-							reload();
+							location.reload()
 						},
 						error : function(data) {
 
@@ -83,9 +83,9 @@ $(document).ready(
 					$('#myModal1').modal('show');
 					//$('#myModal').modal('toggle');
 				}else{
-					var a=$('.h-droped-list');
-					a.wrap('<span class="ab"></span>');
-					var form=$('.ab').html();
+					var formdata=$('.h-droped-list');
+					formdata.wrap('<span class="formData"></span>');
+					var form=$('.formData').html();
 					$.ajax({
                         dataType: "json",
                         type: 'POST',
@@ -97,12 +97,10 @@ $(document).ready(
                         contentType : "application/json",
                         url: "/ManagementUI-BE/addForm",
                         success: function (data) {
-                            //alert("Create project successfull");
-                        	
                         	if($('#myModal').modal('show')){
                         		setTimeout(function() {
                         			 location.reload()
-                        			  },3000);
+                        			  },1000);
                         	}else{alert("112");}
                         	//reload();
                         },
@@ -122,6 +120,106 @@ $(document).ready(
 			        data:$('.ab').html() 
 			    }));*/
 				});
+			$(".btnEditForm").click(function(){
+	            var id = $(this).data("id");
+	            $.ajax({
+	                dataType: "json",
+	                type: 'GET',
+	                /*data : JSON.stringify({
+						"id" : id,
+					}),*/
+	                url: "/ManagementUI-BE/detailForm/" + id,
+	                contentType : "application/json",
+	                success: function (data) {
+	                    var template = $('#editFormTpl').html();
+	                    var html = Mustache.render(template, data);
+	                    $('#editFormDialog').html(html);
+	                    var noidung = $('#noidung1');
+	    			    noidung.html(noidung.text());
+	    			    $( "#editFormDialog" ).dialog({
+	                        title: "Edit Form",
+	                        show: {
+	                            effect: "blind",
+	                            duration: 1000
+	                        },
+	                        height: "auto",
+	                        width: 850,
+	                        modal: true,
+	                        buttons: {
+	                            "Save User": function() {
+	                                var nameForm = $("#editFormDialog").find('#txtName').val();
+	                                var content = $("#editFormDialog").find('#txtAccount').val();
+	                                var password = $("#editFormDialog").find('#txtPassword').val();
+	                                var rule = $("#editFormDialog").find('#txtRule').val();
+	                                $.ajax({
+	                                    dataType: "json",
+	                                    type: 'PUT',
+	                                    data:
+	                                    JSON.stringify({
+	                                    	id : user,
+	                                        nameForm  : nameForm,
+	                                        content : content
+	                                    }),
+	                                    contentType : "application/json",
+	                                    url: "/ManagementUI-BE/editForm",
+	                                    success: function (data) {
+	                                        $( "#editFormDialog" ).dialog( "close" );
+	                                        alert("Save user successfull");
+	                                        reload(0, 0, "");
+	                                    },
+	                                    error: function (data) {
+
+	                                    }
+	                                });
+	                            },
+	                            Cancel: function() {
+	                                $( "#editFormDialog" ).dialog( "close" );
+	                                location.reload()
+	                            }
+	                        },
+	                        hide: {
+	                            effect: "explode",
+	                            duration: 1000
+	                        }
+	                    });
+
+	                    
+	    				
+	    				/*$('#detailFormDialog').text(JSON.stringify({ 
+	    			        data:$('.ab').html() 
+	    			    }));*/
+	    				/*$("#234").click(function(){
+	    					var a=$('#detailFormDialog');
+	    					a.wrap('<span class="ab"></span>');
+	    					var b=($('.ab').html());
+	    				    $("#123").append(b);
+	    				});*/
+	                   /* $("#detailFormDialog" ).dialog({
+	                    	title: "Detail Form",
+	                        show: {
+	                            effect: "blind",
+	                            duration: 1000
+	                        },
+	                        height: 500,
+	                        width: 750,
+	                        modal: true,
+	                        buttons: {
+	                            
+	                            Cancel: function() {
+	                                $( "#detailFormDialog" ).dialog( "close" );
+	                            }
+	                        },
+	                        hide: {
+	                            effect: "explode",
+	                            duration: 1000
+	                        }
+	                    });*/
+	                },
+	                error: function (data) {
+	    
+	                }
+	            });
+	        });
 			$(".btnDetailForm").click(function(){
 	            var id = $(this).data("id");
 	            $.ajax({

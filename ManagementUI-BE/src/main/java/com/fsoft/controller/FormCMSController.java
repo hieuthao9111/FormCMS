@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fsoft.entity.Form;
-import com.fsoft.entity.User;
 import com.fsoft.service.FormCMSService;
 
 
@@ -54,13 +53,11 @@ public class FormCMSController {
 	public Form getFormById(@PathVariable("id") Long id) {
 		return formCMSService.getFormById(id);
 	}
-	
 
-
-	@RequestMapping(value = "/edit", method = RequestMethod.PUT, produces = "application/json")
+	/*@RequestMapping(value = "/editForm", method = RequestMethod.PUT, produces = "application/json")
 	@ResponseBody
-	public  Form editUser(@RequestBody Form form) {
+	public  Form editForm(@RequestBody Form form) {
 		return formCMSService.addForm(form);
-	}
+	}*/
 	
 }
