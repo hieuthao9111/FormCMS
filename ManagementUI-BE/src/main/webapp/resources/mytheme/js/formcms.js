@@ -75,51 +75,7 @@ $(document).ready(
 				}
 				
 			});
-			$("#addForm").click(function() {
-				
-				var nameForm= $("#nameform").val();
-				if(nameForm == null || nameForm== ''){
-					//alert("Input name form !");
-					$('#myModal1').modal('show');
-					//$('#myModal').modal('toggle');
-				}else{
-					var formdata=$('.h-droped-list');
-					formdata.wrap('<span class="formData"></span>');
-					var form=$('.formData').html();
-					$.ajax({
-                        dataType: "json",
-                        type: 'POST',
-                        data:
-                        JSON.stringify({
-                            nameForm: nameForm,
-                            content: form
-                        }),
-                        contentType : "application/json",
-                        url: "/ManagementUI-BE/addForm",
-                        success: function (data) {
-                        	if($('#myModal').modal('show')){
-                        		setTimeout(function() {
-                        			 location.reload()
-                        			  },1000);
-                        	}else{alert("112");}
-                        	//reload();
-                        },
-                        error: function (data) {
-
-                        }
-                        
-                    });
-					
-				}
-				
-				/*var a=$('.result');
-				a.wrap('<span class="ab"></span>');
-				alert($('.ab').html());
-				
-				$('.result').text(JSON.stringify({ 
-			        data:$('.ab').html() 
-			    }));*/
-				});
+			
 			$(".btnEditForm").click(function(){
 	            var id = $(this).data("id");
 	            $.ajax({
@@ -304,3 +260,48 @@ $(document).ready(
 			}
 			reload();
 		});
+$("#addForm").click(function() {
+	
+	var nameForm= $("#nameform").val();
+	if(nameForm == null || nameForm== ''){
+		//alert("Input name form !");
+		$('#myModal1').modal('show');
+		//$('#myModal').modal('toggle');
+	}else{
+		var formdata=$('.h-droped-list');
+		formdata.wrap('<span class="formData"></span>');
+		var form=$('.formData').html();
+		$.ajax({
+            dataType: "json",
+            type: 'POST',
+            data:
+            JSON.stringify({
+                nameForm: nameForm,
+                content: form
+            }),
+            contentType : "application/json",
+            url: "/ManagementUI-BE/addForm",
+            success: function (data) {
+            	if($('#myModal').modal('show')){
+            		setTimeout(function() {
+            			 location.reload()
+            			  },1000);
+            	}else{alert("112");}
+            	//reload();
+            },
+            error: function (data) {
+
+            }
+            
+        });
+		
+	}
+	
+	/*var a=$('.result');
+	a.wrap('<span class="ab"></span>');
+	alert($('.ab').html());
+	
+	$('.result').text(JSON.stringify({ 
+        data:$('.ab').html() 
+    }));*/
+	});
