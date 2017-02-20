@@ -104,25 +104,34 @@ $(document).ready(
 	                        buttons: {
 	                            "Save Data": function() {
 	                            	var fields = [];
-	                            	$('#editFormDialog').each(function() {
-	                            		var type = $("#editFormDialog : type");
+	                            	$('.ui-dialog').each(function() {
+	                            		/*var allInputs = $(":input")
+	                            		var type = allInputs.find("type").val('text');*/ 
+	                            		var items = $("#noidung1 input").map(function(index, elm) {
+	                            		    return {type:elm.type};
+	                            		});
+	                            		var type = $(items).serializeArray();
+	                            		var jsonConvertedData = JSON.stringify(type);  // Convert to json
+	                            		  //consol.log(jsonConvertedData);
+	                            		/*$.each(items, function(i, d){
+	                            		    $("body").append(" Type: " +  d.type);
+	                            		});*/
+	                            		//alert(items);
+	                            		var textInput = $("#editFormDialog").find('#txtText').val();    
+	                            	});
 	                            		//var type = $this.find('type').val();
-	                            		var textInput = $("#editFormDialog").find('#txtText').val();
+	                            		
 		                                /*var textArea = $("#editFormDialog").find('#txtTextArea').val();
 		                                var password = $("#editFormDialog").find('#txtPassword').val();
 		                                var checkBox = $("#editFormDialog").find('#txtCheckBox').val();
 		                                var radio = $("#editFormDialog").find('#txtRadio').val();*/
-	                            	},
-	                            	fields.push({
-	                                    textArea: type,
-	                                    textInput: textInput
-	                                }),
 	                                $.ajax({
 	                                    dataType: "json",
 	                                    type: 'POST',
 	                                    data:
 	                                    JSON.stringify({
-	                                        password  : fields
+	                                        password  : jsonConvertedData,
+	                                        textInput : textInput
 	                                        /*textArea : textArea,
 	                                        password : password,
 	                                        checkBox : checkBox,
@@ -138,7 +147,7 @@ $(document).ready(
 	                                    error: function (data) {
 
 	                                    }
-	                                }));
+	                                });
 	                            	
 	                            },
 	                            Cancel: function() {
