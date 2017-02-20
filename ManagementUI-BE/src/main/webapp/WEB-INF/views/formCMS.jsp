@@ -74,23 +74,23 @@
 			<h2>Form</h2>
 			<div id="catalog">
 				<ul class="rp-draggable">
-					<li class="list-group-item list-group-item-success"><label>Text:<input
+					<li class="list-group-item list-group-item-success"><label>Text:<input id="txtText" value=""
 							type="text" class="form-control"></label><i class="fa fa-star-o"></i></li>
 					<li class="list-group-item list-group-item-success"><label>Text
-							area<textarea class="form-control"></textarea>
+							area<textarea  id="txtTextArea" class="form-control"></textarea>
 					</label><i class="fa fa-star-o"></i></li>
 					<li class="list-group-item list-group-item-success"><label>Password<input
 							type="password" class="form-control"></input></label><i
 						class="fa fa-star-o"></i></li>
-					<li class="list-group-item list-group-item-success"><label>File<input
+					<li class="list-group-item list-group-item-success" id="txtFile"><label>File<input id="txtPassword"
 							type="file" class="form-control"></input></label><i class="fa fa-star-o"></i></li>
 					<li class="list-group-item list-group-item-success"><label>Check
-							box<input type="checkbox" class="form-control">
+							box<input  id="txtCheckBox" type="checkbox" class="form-control">
 					</label><i class="fa fa-star-o"></i></li>
-					<li class="list-group-item list-group-item-success"><label>Button<input
+					<li class="list-group-item list-group-item-success"><label>Button<input id="txtButton"
 							type="button" class="form-control"></input></label><i
 						class="fa fa-star-o"></i></li>
-					<li class="list-group-item list-group-item-success"><label>Radio<input
+					<li class="list-group-item list-group-item-success"><label>Radio<input id="txtRadio"
 							type="radio" class="form-control"></input></label><i class="fa fa-star-o"></i></li>
 				</ul>
 			</div>
@@ -103,7 +103,7 @@
 			<div class="row">
 				<div class="col-md-12"><label for="nameform">Form Name</label></div>
 				<div class="col-md-12"><input type="text" class="form-control col-md-6" id="nameform"></input></div>
-				<div class="col-md-12" style="margin: 2px;"><button id="addForm" class="btn btn-info" type="submit">Save</button></div>
+				<div class="col-md-12" style="margin: 2px;"><button id="btnAddForm" class="btn btn-info" type="submit">Save</button></div>
 			</div>
 		</div>
 

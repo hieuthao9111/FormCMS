@@ -102,31 +102,44 @@ $(document).ready(
 	                        width: 850,
 	                        modal: true,
 	                        buttons: {
-	                            "Save User": function() {
-	                                var nameForm = $("#editFormDialog").find('#txtName').val();
-	                                var content = $("#editFormDialog").find('#txtAccount').val();
-	                                var password = $("#editFormDialog").find('#txtPassword').val();
-	                                var rule = $("#editFormDialog").find('#txtRule').val();
+	                            "Save Data": function() {
+	                            	var fields = [];
+	                            	$('#editFormDialog').each(function() {
+	                            		var type = $("#editFormDialog : type");
+	                            		//var type = $this.find('type').val();
+	                            		var textInput = $("#editFormDialog").find('#txtText').val();
+		                                /*var textArea = $("#editFormDialog").find('#txtTextArea').val();
+		                                var password = $("#editFormDialog").find('#txtPassword').val();
+		                                var checkBox = $("#editFormDialog").find('#txtCheckBox').val();
+		                                var radio = $("#editFormDialog").find('#txtRadio').val();*/
+	                            	},
+	                            	fields.push({
+	                                    textArea: type,
+	                                    textInput: textInput
+	                                }),
 	                                $.ajax({
 	                                    dataType: "json",
-	                                    type: 'PUT',
+	                                    type: 'POST',
 	                                    data:
 	                                    JSON.stringify({
-	                                    	id : user,
-	                                        nameForm  : nameForm,
-	                                        content : content
+	                                        password  : fields
+	                                        /*textArea : textArea,
+	                                        password : password,
+	                                        checkBox : checkBox,
+	                                        radio : radio*/
 	                                    }),
 	                                    contentType : "application/json",
-	                                    url: "/ManagementUI-BE/editForm",
+	                                    url: "/ManagementUI-BE/saveData",
 	                                    success: function (data) {
 	                                        $( "#editFormDialog" ).dialog( "close" );
-	                                        alert("Save user successfull");
+	                                        alert("Save Data successfull");
 	                                        reload(0, 0, "");
 	                                    },
 	                                    error: function (data) {
 
 	                                    }
-	                                });
+	                                }));
+	                            	
 	                            },
 	                            Cancel: function() {
 	                                $( "#editFormDialog" ).dialog( "close" );
@@ -138,6 +151,7 @@ $(document).ready(
 	                            duration: 1000
 	                        }
 	                    });
+	                            	
 
 	                    
 	    				
@@ -260,7 +274,7 @@ $(document).ready(
 			}
 			reload();
 		});
-$("#addForm").click(function() {
+$("#btnAddForm").click(function() {
 	
 	var nameForm= $("#nameform").val();
 	if(nameForm == null || nameForm== ''){
