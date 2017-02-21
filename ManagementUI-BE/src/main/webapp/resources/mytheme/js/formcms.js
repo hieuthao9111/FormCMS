@@ -8,6 +8,27 @@ $(document).ready(
 				
 			}
 
+						$.getJSON( "listData", function( data ) {
+							  var items = [];
+							  $.each( data, function( key, val ) {
+
+								  var obj = JSON.stringify(val);
+								  var obj2 = $.parseJSON(obj);
+								  
+								  alert(obj2);
+								  //var obj2 = JSON.parse(obj);
+								  //var arr = $.makeArray( obj );
+							    items.push( "<li id='" + key + "'>" + obj + "</li>" );
+							  });
+							 
+							  $( "<ul/>", {
+							    "class": "my-new-list",
+							    html: items.join( "" )
+							  }).appendTo( "body" );
+							});
+
+			
+
 			/* jQuery Droppable */
 			$(function() {
 				$(".mn-items .rp-draggable li").draggable({
@@ -103,22 +124,37 @@ $(document).ready(
 	                        modal: true,
 	                        buttons: {
 	                            "Save Data": function() {
-	                            	var fields = [];
-	                            	$('.ui-dialog').each(function() {
+	                            	//var fields = [];
+	                            	
+	                            	
+	                            	var textInput = $("#editFormDialog").find('#txtText').val();
+	                            	var password = $("#editFormDialog").find('#txtPassword').val();
+	                            	var checkBox = $("#editFormDialog").find('#txtCheckBox').val();
+	                            	var radio = $("#editFormDialog").find('#txtRadio').val();
+	                            	//$('.ui-dialog').each(function() {
 	                            		/*var allInputs = $(":input")
 	                            		var type = allInputs.find("type").val('text');*/ 
 	                            		var items = $("#noidung1 input").map(function(index, elm) {
 	                            		    return {type:elm.type};
 	                            		});
-	                            		var type = $(items).serializeArray();
-	                            		var jsonConvertedData = JSON.stringify(type);  // Convert to json
+	                            		//var type = $(items).serializeArray();
+	                            		//var jsonConvertedData = JSON.stringify(type);  // Convert to json
 	                            		  //consol.log(jsonConvertedData);
-	                            		/*$.each(items, function(i, d){
+	                            		var arr = [];
+	                            		$.each(items, function(i, d){
+	                            			
+	                            			arr.push(d);
+	                            			
+	                            			alert(JSON.stringify(d));
+	                            			//arr.toString(arr.push(d));
+	                            			alert(arr);
 	                            		    $("body").append(" Type: " +  d.type);
-	                            		});*/
+	                            		});
 	                            		//alert(items);
-	                            		var textInput = $("#editFormDialog").find('#txtText').val();    
-	                            	});
+	                            		
+	                            		    
+	                            	//});
+	                            	var array = JSON.stringify(arr);
 	                            		//var type = $this.find('type').val();
 	                            		
 		                                /*var textArea = $("#editFormDialog").find('#txtTextArea').val();
@@ -130,12 +166,11 @@ $(document).ready(
 	                                    type: 'POST',
 	                                    data:
 	                                    JSON.stringify({
-	                                        password  : jsonConvertedData,
-	                                        textInput : textInput
-	                                        /*textArea : textArea,
+	                                        arrValue  : array,
+	                                        textInput : textInput,
 	                                        password : password,
 	                                        checkBox : checkBox,
-	                                        radio : radio*/
+	                                        radio : radio
 	                                    }),
 	                                    contentType : "application/json",
 	                                    url: "/ManagementUI-BE/saveData",
@@ -264,6 +299,7 @@ $(document).ready(
 
 				});
 			}
+			
 			function reload() {
 				$.ajax({
 					dataType : "json",

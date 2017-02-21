@@ -1,5 +1,7 @@
 package com.fsoft.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +17,9 @@ public class DataFormService {
 	public DataForm saveData(DataForm dataForm){
 		return dataFormDao.save(dataForm);
 	} 
+	
+	public List<DataForm> getAllData(){
+		return dataFormDao.findAll();
+	}
 
 }

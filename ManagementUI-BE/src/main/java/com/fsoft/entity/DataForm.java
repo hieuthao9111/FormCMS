@@ -11,6 +11,13 @@ import javax.persistence.Table;
 @Table(name = "dataForm")
 public class DataForm {
 	private Long id;
+	private String arrValue;
+	public String getArrValue() {
+		return arrValue;
+	}
+	public void setArrValue(String arrValue) {
+		this.arrValue = arrValue;
+	}
 	private String textInput;
 	private String textArea;
 	private String password;
@@ -69,10 +76,13 @@ public class DataForm {
 	public void setRadio(String radio) {
 		this.radio = radio;
 	}
-	public DataForm(Long id, String textInput, String textArea,
-			String password, String file, String checkBox, String radio) {
+	
+	public DataForm(Long id, String arrValue, String textInput,
+			String textArea, String password, String file, String checkBox,
+			String radio) {
 		super();
 		this.id = id;
+		this.arrValue = arrValue;
 		this.textInput = textInput;
 		this.textArea = textArea;
 		this.password = password;

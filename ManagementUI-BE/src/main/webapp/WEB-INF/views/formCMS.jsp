@@ -79,10 +79,10 @@
 					<li class="list-group-item list-group-item-success"><label>Text
 							area<textarea  id="txtTextArea" class="form-control"></textarea>
 					</label><i class="fa fa-star-o"></i></li>
-					<li class="list-group-item list-group-item-success"><label>Password<input
+					<li class="list-group-item list-group-item-success"><label>Password<input id="txtPassword"
 							type="password" class="form-control"></input></label><i
 						class="fa fa-star-o"></i></li>
-					<li class="list-group-item list-group-item-success" id="txtFile"><label>File<input id="txtPassword"
+					<li class="list-group-item list-group-item-success" id="txtFile"><label>File<input id="txtFile"
 							type="file" class="form-control"></input></label><i class="fa fa-star-o"></i></li>
 					<li class="list-group-item list-group-item-success"><label>Check
 							box<input  id="txtCheckBox" type="checkbox" class="form-control">
