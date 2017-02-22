@@ -24,7 +24,14 @@ public class DataForm {
 	private String file;
 	private String checkBox;
 	private String radio;
+	private String type;
 	
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -77,9 +84,10 @@ public class DataForm {
 		this.radio = radio;
 	}
 	
+	
 	public DataForm(Long id, String arrValue, String textInput,
 			String textArea, String password, String file, String checkBox,
-			String radio) {
+			String radio, String type) {
 		super();
 		this.id = id;
 		this.arrValue = arrValue;
@@ -89,6 +97,7 @@ public class DataForm {
 		this.file = file;
 		this.checkBox = checkBox;
 		this.radio = radio;
+		this.type = type;
 	}
 	public DataForm() {
 		super();

@@ -21,5 +21,7 @@ public class DataFormService {
 	public List<DataForm> getAllData(){
 		return dataFormDao.findAll();
 	}
-
+	public DataForm getFormDataById(Long id){
+		return dataFormDao.findOne(id);
+	}
 }
