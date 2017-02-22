@@ -8,23 +8,37 @@ $(document).ready(
 				
 			}
 
-						$.getJSON( "listData", function( data ) {
-							  var items = [];
-							  $.each( data, function( key, val ) {
-
-								  var obj = JSON.stringify(val);
-								  var obj2 = $.parseJSON(obj);
-								  
-								  alert(obj2);
-								  //var obj2 = JSON.parse(obj);
-								  //var arr = $.makeArray( obj );
-							    items.push( "<li id='" + key + "'>" + obj + "</li>" );
-							  });
-							 
-							  $( "<ul/>", {
-							    "class": "my-new-list",
-							    html: items.join( "" )
-							  }).appendTo( "body" );
+						$.getJSON( "listData/22", function( data ) {
+							var items = [];
+							$.each( data, function( key, val ) {
+								var obj = JSON.stringify(data);
+								var jsonObj = JSON.parse(obj);
+//								for (var i = 0; i < jsonObj.length; i++) {
+								/*if(jsonObj.contains("text")){
+								    alert("String Found");
+								}*/
+								if(obj.indexOf(".")>=0){
+									alert("dfsd");
+								}
+//									for (var j=0;j<str.length;j++){
+//										var o = str[j].type;
+//										items.push("<li><textarea id=>"+o+"</textarea></li>");
+//									}
+//									
+////									items.push("<li><textarea id=12233>123321</textarea></li>");
+//								}
+								//var obj2 = $.parseJSON(obj);
+								
+								//alert(obj);
+								//var obj2 = JSON.parse(obj);
+								//var arr = $.makeArray( obj );
+								//items.push( "<li id='" + key + "'>" + obj + "</li>" );
+							});
+							
+							$( "<ul/>", {
+								"class": "my-new-list",
+								html: items.join( "" )
+							}).appendTo( "body" );
 							});
 
 			
