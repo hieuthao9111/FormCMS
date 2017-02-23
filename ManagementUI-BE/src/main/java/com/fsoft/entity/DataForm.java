@@ -2,22 +2,22 @@ package com.fsoft.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 
 @Entity
 @Table(name = "dataForm")
 public class DataForm {
 	private Long id;
 	private String arrValue;
-	public String getArrValue() {
-		return arrValue;
-	}
-	public void setArrValue(String arrValue) {
-		this.arrValue = arrValue;
-	}
 	private String textInput;
 	private String textArea;
 	private String password;
@@ -25,6 +25,8 @@ public class DataForm {
 	private String checkBox;
 	private String radio;
 	private String type;
+	private Long formId;
+	private Form form;
 	
 	public String getType() {
 		return type;
@@ -40,6 +42,22 @@ public class DataForm {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "dataForm", nullable = false)
+	public Form getForm() {
+		return form;
+	}
+	public void setForm(Form form) {
+		this.form = form;
+	}
+	@Column
+	public String getArrValue() {
+		return arrValue;
+	}
+	public void setArrValue(String arrValue) {
+		this.arrValue = arrValue;
 	}
 	@Column(name = "textInput")
 	public String getTextInput() {
@@ -83,11 +101,18 @@ public class DataForm {
 	public void setRadio(String radio) {
 		this.radio = radio;
 	}
-	
+	@Column(name = "formId")
+	public Long getFormId() {
+		return formId;
+	}
+	public void setFormId(Long formId) {
+		this.formId = formId;
+	}
+
 	
 	public DataForm(Long id, String arrValue, String textInput,
 			String textArea, String password, String file, String checkBox,
-			String radio, String type) {
+			String radio, String type, Long formId, Form form) {
 		super();
 		this.id = id;
 		this.arrValue = arrValue;
@@ -98,6 +123,8 @@ public class DataForm {
 		this.checkBox = checkBox;
 		this.radio = radio;
 		this.type = type;
+		this.formId = formId;
+		this.form = form;
 	}
 	public DataForm() {
 		super();

@@ -336,6 +336,7 @@ $(document).ready(
 $("#btnAddForm").click(function() {
 	
 	var nameForm= $("#nameform").val();
+	var userId = ($("#idUser").val());
 	if(nameForm == null || nameForm== ''){
 		//alert("Input name form !");
 		$('#myModal1').modal('show');
@@ -349,6 +350,7 @@ $("#btnAddForm").click(function() {
             type: 'POST',
             data:
             JSON.stringify({
+            	userId :userId,
                 nameForm: nameForm,
                 content: form
             }),
