@@ -145,42 +145,23 @@ $(document).ready(
 	                            	var password = $("#editFormDialog").find('#txtPassword').val();
 	                            	var checkBox = $("#editFormDialog").find('#txtCheckBox').val();
 	                            	var radio = $("#editFormDialog").find('#txtRadio').val();
-	                            	//$('.ui-dialog').each(function() {
-	                            		/*var allInputs = $(":input")
-	                            		var type = allInputs.find("type").val('text');*/ 
+	                            	var idForm = $("#editFormDialog").find('#txtIdForm').val();
 	                            		var items = $("#noidung1 input").map(function(index, elm) {
 	                            		    return {type:elm.type};
 	                            		});
-	                            		//var type = $(items).serializeArray();
-	                            		//var jsonConvertedData = JSON.stringify(type);  // Convert to json
-	                            		  //consol.log(jsonConvertedData);
 	                            		var arr = [];
 	                            		$.each(items, function(i, d){
-	                            			
 	                            			arr.push(d);
-	                            			
 	                            			alert(JSON.stringify(d));
-	                            			//arr.toString(arr.push(d));
-	                            			alert(arr);
-	                            		    $("body").append(" Type: " +  d.type);
 	                            		});
-	                            		//alert(items);
-	                            		
-	                            		    
-	                            	//});
 	                            	var array = JSON.stringify(arr);
-	                            		//var type = $this.find('type').val();
-	                            		
-		                                /*var textArea = $("#editFormDialog").find('#txtTextArea').val();
-		                                var password = $("#editFormDialog").find('#txtPassword').val();
-		                                var checkBox = $("#editFormDialog").find('#txtCheckBox').val();
-		                                var radio = $("#editFormDialog").find('#txtRadio').val();*/
 	                                $.ajax({
 	                                    dataType: "json",
 	                                    type: 'POST',
 	                                    data:
 	                                    JSON.stringify({
-	                                        arrValue  : array,
+	                                        formId : idForm,
+	                                    	arrValue  : array,
 	                                        textInput : textInput,
 	                                        password : password,
 	                                        checkBox : checkBox,
@@ -209,39 +190,6 @@ $(document).ready(
 	                            duration: 1000
 	                        }
 	                    });
-	                            	
-
-	                    
-	    				
-	    				/*$('#detailFormDialog').text(JSON.stringify({ 
-	    			        data:$('.ab').html() 
-	    			    }));*/
-	    				/*$("#234").click(function(){
-	    					var a=$('#detailFormDialog');
-	    					a.wrap('<span class="ab"></span>');
-	    					var b=($('.ab').html());
-	    				    $("#123").append(b);
-	    				});*/
-	                   /* $("#detailFormDialog" ).dialog({
-	                    	title: "Detail Form",
-	                        show: {
-	                            effect: "blind",
-	                            duration: 1000
-	                        },
-	                        height: 500,
-	                        width: 750,
-	                        modal: true,
-	                        buttons: {
-	                            
-	                            Cancel: function() {
-	                                $( "#detailFormDialog" ).dialog( "close" );
-	                            }
-	                        },
-	                        hide: {
-	                            effect: "explode",
-	                            duration: 1000
-	                        }
-	                    });*/
 	                },
 	                error: function (data) {
 	    
@@ -301,17 +249,6 @@ $(document).ready(
 	                }
 	            });
 	        });
-				$("#234").click(function(){
-					/*a.wrap('<span class="abc"></span>');
-					var b=($('.abc').html());*/
-					var a=$('#noidung');
-    				a.wrap('<span class="ab"></span>');
-    				var b=$('.ab').html();
-    				$("#123").append(b).html();
-    				/*var d = $('#noidung');
-    			    d.html(d.text());*/
-
-				});
 			}
 			
 			function reload() {
@@ -338,9 +275,7 @@ $("#btnAddForm").click(function() {
 	var nameForm= $("#nameform").val();
 	var userId = ($("#idUser").val());
 	if(nameForm == null || nameForm== ''){
-		//alert("Input name form !");
 		$('#myModal1').modal('show');
-		//$('#myModal').modal('toggle');
 	}else{
 		var formdata=$('.h-droped-list');
 		formdata.wrap('<span class="formData"></span>');
@@ -371,12 +306,4 @@ $("#btnAddForm").click(function() {
         });
 		
 	}
-	
-	/*var a=$('.result');
-	a.wrap('<span class="ab"></span>');
-	alert($('.ab').html());
-	
-	$('.result').text(JSON.stringify({ 
-        data:$('.ab').html() 
-    }));*/
 	});

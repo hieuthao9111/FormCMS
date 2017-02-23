@@ -18,6 +18,11 @@
                             <tr>
                                 <td>Content</td>
                                 <td>{{content}}</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>id</td>
+                                <td id = "txtIdForm">{{id}}</td>
                             </tr>
                         </tbody>
                     </table>

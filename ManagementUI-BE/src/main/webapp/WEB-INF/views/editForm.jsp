@@ -38,6 +38,7 @@
                             </tr>
                             <tr>
                                 <td>{{nameForm}}</td>
+                                <td style = "display: none"><input id = "txtIdForm" value = {{id}} ></input></td>
                                 <td id="noidung1">{{content}}</td>
                             </tr>
                         </tbody>

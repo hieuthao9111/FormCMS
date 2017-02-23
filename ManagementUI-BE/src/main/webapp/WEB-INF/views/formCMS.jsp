@@ -70,7 +70,12 @@
                             </tr>
                             <tr>
                                 <td>{{nameForm}}</td>
+                                <td style = "display: none"><input id = "txtIdForm">{{id}}</input></td>
                                 <td id="noidung">{{content}}</td>
+                            </tr>
+                            <tr>
+                                <td>id</td>
+                                
                             </tr>
                         </tbody>
                     </table>

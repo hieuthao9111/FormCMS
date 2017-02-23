@@ -38,7 +38,7 @@ public class Form {
 	
 
 	@JsonIgnore
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY , optional = false)
 	@JoinColumn(name = "user", nullable = true)
 	public User getUser() {
 		return user;

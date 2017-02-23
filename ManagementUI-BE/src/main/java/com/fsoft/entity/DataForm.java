@@ -44,8 +44,8 @@ public class DataForm {
 		this.id = id;
 	}
 	@JsonIgnore
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "dataForm", nullable = false)
+	@ManyToOne(fetch = FetchType.LAZY , optional = false)
+	@JoinColumn(name = "dataForm", nullable = true)
 	public Form getForm() {
 		return form;
 	}
