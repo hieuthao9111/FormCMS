@@ -8,6 +8,16 @@
 </head>
 <body>
 
+<div class="form-group">
+    	<form class="col-SM-3 col-md-offset-10" action="logout" style="width: 200px;">
+    	<label>Wellcome User :</label>
+    		<input class="form-control" type="text"  value="<%=session.getAttribute("user") %>" disabled><br>
+    		<input class="form-control" type="text" value="<%=session.getAttribute("userName") %>" disabled><br>
+    		<input class="form-control" type="text" id = "idUser" value="<%=session.getAttribute("userId") %>" disabled><br>
+    		<input class="btn btn-primary" type="submit" value="Logout" />
+		</form>
+		
+</div>
 	<div class="row">
 	<h1>FORM CMS</h1><br>
 	<div class="col-xs-4 col-md-3"><h2>List Form</h2><div id="listForm"></div></div>

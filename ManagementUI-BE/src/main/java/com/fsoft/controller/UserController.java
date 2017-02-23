@@ -114,6 +114,7 @@ public class UserController {
 				HttpSession session = req.getSession(true);
 				session.setAttribute("user", user);
 				session.setAttribute("userName", user.getName());
+				session.setAttribute("userId", user.getId());
 				return new ModelAndView("redirect:listUser");
 			}
 		}

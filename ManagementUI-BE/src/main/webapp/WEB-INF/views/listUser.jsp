@@ -11,7 +11,7 @@
     <div class="form-group">
     	<form class="col-SM-3 col-md-offset-10" action="logout" style="width: 200px;">
     	<label>Wellcome User :</label>
-    		<input class="form-control" type="text" id="inputSuccess2" value="<%=session.getAttribute("userName") %>" disabled><br>
+    		<input class="form-control" type="text" value="<%=session.getAttribute("userName") %>" disabled><br>
     		<input class="btn btn-primary" type="submit" value="Logout" />
 		</form>
 		
