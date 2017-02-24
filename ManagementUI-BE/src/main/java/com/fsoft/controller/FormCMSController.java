@@ -3,6 +3,8 @@ package com.fsoft.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,10 +24,11 @@ public class FormCMSController {
 	@Autowired
 	FormCMSService formCMSService;
 	
-	@RequestMapping(value = "/index2")
+	@RequestMapping(value = "/Form")
 	public ModelAndView form() {
 		return new ModelAndView("formCMS");
 	}
+	
 	@RequestMapping(value= "/addForm", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody
 	public Object addForm(@RequestBody Form form){

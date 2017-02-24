@@ -18,7 +18,7 @@ $(document).ready(function() {
                     effect: "blind",
                     duration: 1000
                 },
-                height: 500,
+                height: "auto",
                 width: 750,
                 modal: true,
                 buttons: {

@@ -1,6 +1,7 @@
 package com.fsoft.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +30,10 @@ public class DataFormController {
 		return result;
 	}
 	
-	@RequestMapping(value= "/listData/{id}", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value= "/detailData/{id}", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
-	public DataForm getData(@PathVariable("id") Long id){
-		 
-		return dataFormService.getFormDataById(id);
+	public List<DataForm> getData(@PathVariable("id") Long id){
+		return dataFormService.getDataByFormId(id);
 	}
 
 }

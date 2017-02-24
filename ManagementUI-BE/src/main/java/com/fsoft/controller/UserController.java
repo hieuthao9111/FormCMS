@@ -43,7 +43,7 @@ public class UserController {
 		int rule = user.getRule();
 		if(rule == 1 ){
 			  return new ModelAndView("listUser");
-			}else return new ModelAndView("redirect:loginpage");
+			}else return new ModelAndView("redirect:Form");
 			   
 		 
 	}
@@ -115,6 +115,7 @@ public class UserController {
 				session.setAttribute("user", user);
 				session.setAttribute("userName", user.getName());
 				session.setAttribute("userId", user.getId());
+				session.setAttribute("userRole", user.getRule());
 				return new ModelAndView("redirect:listUser");
 			}
 		}

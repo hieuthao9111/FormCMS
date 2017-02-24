@@ -14,16 +14,16 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="inputEmail3" class="col-sm-2 control-label">Ruler</label>
+        <label for="inputEmail3" class="col-sm-2 control-label">Password</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="txtpassword" placeholder="Password" value="">
             <span style="font-size: 11px;color: red" id="errortxtdirectmanager"></span>
         </div>
     </div>
     <div class="form-group">
-        <label for="inputEmail3" class="col-sm-2 control-label">Password</label>
+        <label for="inputEmail3" class="col-sm-2 control-label">Role</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="txtrule" placeholder="Rule" value="">
+            <input type="text" class="form-control" id="txtrule" placeholder="Role" value="">
             <span style="font-size: 11px;color: red" id="errortxtseniormanager"></span>
         </div>
     </div>

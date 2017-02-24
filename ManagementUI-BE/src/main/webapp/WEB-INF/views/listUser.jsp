@@ -8,15 +8,7 @@
     <c:import url="header1.jsp" />
  
     <body>
-    <div class="form-group">
-    	<form class="col-SM-3 col-md-offset-10" action="logout" style="width: 200px;">
-    	<label>Wellcome User :</label>
-    		<input class="form-control" type="text" value="<%=session.getAttribute("userName") %>" disabled><br>
-    		<input class="btn btn-primary" type="submit" value="Logout" />
-		</form>
-		
-	</div>
-    
+    <h1>USER</h1><br>
         <%-- <c:import url="topmenu.jsp" /> --%>
         <div class="panel panel-info">
             <div class="panel-body">
@@ -69,6 +61,7 @@
         <c:import url="editUser.jsp" />
         <c:import url="detailUser.jsp" />
         <c:import url="addUser.jsp" />
+        <c:import url="modalDialog.jsp" />
     </body>
 </html>
 

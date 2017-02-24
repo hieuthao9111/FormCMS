@@ -40,9 +40,18 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
+        <li><a href="/ManagementUI-BE/listUser">List User<span class="sr-only">(current)</span></a></li>
+        <li><a href="/ManagementUI-BE/Form">Form<span class="sr-only">(current)</span></a></li>
+        
       </ul>
+      <form action="logout">
+      <ul class="nav navbar-nav navbar-right">
+            <li><a><input class="form-control" value="<%=session.getAttribute("userName") %>" disabled></a></li>
+            <li style = "display: none"><a><input class="form-control" type="text" id = "idUser" value="<%=session.getAttribute("userId") %>" disabled></a></li>
+            <li ><a><input class="form-control" type="text" id = "userRole" value="<%=session.getAttribute("userRole") %>" disabled></a></li>
+            <li><a><input class="btn btn-primary" type="submit" value="Logout" /></a></li>
+          </ul>
+      </form>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

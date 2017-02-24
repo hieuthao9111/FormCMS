@@ -7,17 +7,6 @@
 <script src="<c:url value="../resources/mytheme/js/formcms.js" />"></script>
 </head>
 <body>
-
-<div class="form-group">
-    	<form class="col-SM-3 col-md-offset-10" action="logout" style="width: 200px;">
-    	<label>Wellcome User :</label>
-    		<input class="form-control" type="text"  value="<%=session.getAttribute("user") %>" disabled><br>
-    		<input class="form-control" type="text" value="<%=session.getAttribute("userName") %>" disabled><br>
-    		<input class="form-control" type="text" id = "idUser" value="<%=session.getAttribute("userId") %>" disabled><br>
-    		<input class="btn btn-primary" type="submit" value="Logout" />
-		</form>
-		
-</div>
 	<div class="row">
 	<h1>FORM CMS</h1><br>
 	<div class="col-xs-4 col-md-3"><h2>List Form</h2><div id="listForm"></div></div>
@@ -38,7 +27,7 @@
                         <td>{{nameForm}}</td>
                         <td id = "contentForm" style="display:none;">{{content}}</td>
                         <td>
-                            <button type="button" class="btn btn-primary btn-xs btnDeleteForm" data-id="{{id}}">Delete</button>
+                            <button type="button" class="btn btn-primary btn-xs btnDeleteForm" data-id="{{id}}" data-toggle="modal" data-target="#myModalDelete">Delete</button>
                             <button type="button" class="btn btn-primary btn-xs btnEditForm" data-id="{{id}}">Edit</button>
                             <button type="button" class="btn btn-primary btn-xs btnDetailForm" data-id="{{id}}">View</button>
                         </td>
@@ -53,8 +42,8 @@
             </table>
         </div>
         
-        <div class="col-xs-6 col-md-3"><h2>Content</h2><div id="detailFormDialog" class="form-horizontal"></div></div>
-<div id="detailFormTpl" style="display: none;">
+        <div class="col-xs-6 col-md-3"><h2>Content</h2><div id="detailDataFormDialog" class="form-horizontal"></div></div>
+<div id="detailDataFormTpl" style="display: none;">
     <div class="panel panel-info">
         <!--                    <div class="panel-heading">
                                 <h3 class="panel-title">Sheena Kristin A.Eschor</h3>
@@ -63,21 +52,12 @@
             <div class="row">
                 <div class=" col-md-9 col-lg-12 "> 
                     <table class="table table-user-information">
-                        <tbody>
-                            <tr>
-                                <td>Name</td>
-                                <td>Content</td>
-                            </tr>
-                            <tr>
-                                <td>{{nameForm}}</td>
-                                <td style = "display: none"><input id = "txtIdForm">{{id}}</input></td>
-                                <td id="noidung">{{content}}</td>
-                            </tr>
-                            <tr>
-                                <td>id</td>
-                                
-                            </tr>
-                        </tbody>
+                            <ul>
+                                <li>Data</li>
+                                <li><input type="text" class="form-control" value={{textInput}}></input></li>
+                                <li><input type="password" class="form-control" value={{password}}></input></li>
+                                <li><input type="text" class="form-control" value={{arrValue}}></input></li>
+                            </ul>
                     </table>
 
                 </div>
@@ -123,54 +103,7 @@
 		</div>
 
 	</div>
-	<!-- <div style="margin: 600px;"></div> -->
-	
-	<!-- <div id="result"></div>
-	<div id="123" class="h-droped-list ui-droppable ui-sortable"></div>
-	<button id="234">Render</button> -->
-	
-	
-
-	<!-- dialog -->
-	<!-- Modal -->
-	<div class="modal fade" id="myModal" role="dialog">
-		<div class="modal-dialog">
-
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Form alert</h4>
-				</div>
-				<div class="modal-body">
-					<p>Add form success</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-
-		</div>
-	</div>
-	<div class="modal fade" id="myModal1" role="dialog">
-		<div class="modal-dialog">
-
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Form alert</h4>
-				</div>
-				<div class="modal-body">
-					<p>Input Name Form</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-
-		</div>
-	</div>
 	<c:import url="editForm.jsp" />
+	<c:import url="modalDialog.jsp" />
 </body>
 </html>

@@ -8,15 +8,15 @@ $(document).ready(
 				
 			}
 
-						$.getJSON( "listData/22", function( data ) {
+						/*$.getJSON( "listData/22", function( data ) {
 							var items = [];
 							$.each( data, function( key, val ) {
 								var obj = JSON.stringify(data);
 								var jsonObj = JSON.parse(obj);
 //								for (var i = 0; i < jsonObj.length; i++) {
-								/*if(jsonObj.contains("text")){
+								if(jsonObj.contains("text")){
 								    alert("String Found");
-								}*/
+								}
 								if(obj.indexOf(".")>=0){
 									alert("dfsd");
 								}
@@ -39,7 +39,7 @@ $(document).ready(
 								"class": "my-new-list",
 								html: items.join( "" )
 							}).appendTo( "body" );
-							});
+							});*/
 
 			
 
@@ -85,11 +85,16 @@ $(document).ready(
 				});*/
 
 			function action() {
-			$(".btnDeleteForm").click(function() {
+			$("#deletebtn").click(function() {
+				var role = $("#userRole").val();
 				var id = $(this).data("id");
 				// console.log("staffId:" +staffId);
 				// console.log("projectId:" +projectId);
-				if (confirm("do you want to remove this form?")) {
+				if(role == 0){
+					alert("You not is Admin")
+				}
+				else {
+					$('#myModalDelete').modal('show');
 					$.ajax({
 						dataType : "json",
 						type : 'DELETE',
@@ -103,8 +108,10 @@ $(document).ready(
 						},
 						error : function(data) {
 
-						}
-						
+						},
+						Cancel: function() {
+                            location.reload()
+						},
 					});
 					
 				}
@@ -152,7 +159,6 @@ $(document).ready(
 	                            		var arr = [];
 	                            		$.each(items, function(i, d){
 	                            			arr.push(d);
-	                            			alert(JSON.stringify(d));
 	                            		});
 	                            	var array = JSON.stringify(arr);
 	                                $.ajax({
@@ -204,15 +210,22 @@ $(document).ready(
 	                /*data : JSON.stringify({
 						"id" : id,
 					}),*/
-	                url: "/ManagementUI-BE/detailForm/" + id,
+	                url: "/ManagementUI-BE/detailData/" + id,
 	                contentType : "application/json",
 	                success: function (data) {
-	                    var template = $('#detailFormTpl').html();
-	                    var html = Mustache.render(template, data);
-	                    $('#detailFormDialog').html(html);
-	                    var d = $('#noidung');
-	    			    d.html(d.text());
-	                    
+	                	 //alert(data.length);
+	                   for (i=0;i<data.length;i++) {
+	                    var template = $('#detailDataFormTpl').html();
+	                    var html = Mustache.render(template, data[i]);
+	                    $('#detailDataFormDialog').html(html);
+	                    //alert(data[i]);
+	                  
+	                    //for(i = 0; i<data.length; i++){
+	                    //}
+//	                    var d = $('#noidung');
+//	    			    d.html(d.text());
+	                   }
+	                	 
 	    				
 	    				/*$('#detailFormDialog').text(JSON.stringify({ 
 	    			        data:$('.ab').html() 
@@ -271,12 +284,15 @@ $(document).ready(
 			reload();
 		});
 $("#btnAddForm").click(function() {
-	
+	var role = $("#userRole").val();
 	var nameForm= $("#nameform").val();
 	var userId = ($("#idUser").val());
-	if(nameForm == null || nameForm== ''){
+	if(role == 0){
+		alert("You not is Admin")
+	}else if(nameForm == null || nameForm== ''){
 		$('#myModal1').modal('show');
-	}else{
+	}
+	else{
 		var formdata=$('.h-droped-list');
 		formdata.wrap('<span class="formData"></span>');
 		var form=$('.formData').html();
