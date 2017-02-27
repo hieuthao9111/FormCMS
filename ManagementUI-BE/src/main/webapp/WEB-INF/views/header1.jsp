@@ -34,7 +34,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://localhost:8080/ManagementUI-BE/loginpage">Form management</a>
+      <a class="navbar-brand" href="/ManagementUI-BE/loginpage">Form management</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -48,7 +48,7 @@
       <ul class="nav navbar-nav navbar-right">
             <li><a><input class="form-control" value="<%=session.getAttribute("userName") %>" disabled></a></li>
             <li style = "display: none"><a><input class="form-control" type="text" id = "idUser" value="<%=session.getAttribute("userId") %>" disabled></a></li>
-            <li ><a><input class="form-control" type="text" id = "userRole" value="<%=session.getAttribute("userRole") %>" disabled></a></li>
+            <li style = "display: none"><a><input class="form-control" type="text" id = "userRole" value="<%=session.getAttribute("userRole") %>" disabled></a></li>
             <li><a><input class="btn btn-primary" type="submit" value="Logout" /></a></li>
           </ul>
       </form>

@@ -85,16 +85,53 @@ $(document).ready(
 				});*/
 
 			function action() {
-			$("#deletebtn").click(function() {
+				$("#btnAddForm").click(function() {
+					var role = $("#userRole").val();
+					var nameForm= $("#nameform").val();
+					var userId = ($("#idUser").val());
+					if(role == 0){
+						alert("You not is Admin")
+					}else if(nameForm == null || nameForm== ''){
+						$('#myModal1').modal('show');
+					}
+					else{
+						var formdata=$('.h-droped-list');
+						formdata.wrap('<span class="formData"></span>');
+						var form=$('.formData').html();
+						$.ajax({
+				            dataType: "json",
+				            type: 'POST',
+				            data:
+				            JSON.stringify({
+				            	userId :userId,
+				                nameForm: nameForm,
+				                content: form
+				            }),
+				            contentType : "application/json",
+				            url: "/ManagementUI-BE/addForm",
+				            success: function (data) {
+				            	$('#myModal').modal('show')
+				            	reload();
+				            },
+				            error: function (data) {
+
+				            }
+				            
+				        });
+						
+					}
+					});	
+			$(".btnDeleteForm").click(function() {
 				var role = $("#userRole").val();
 				var id = $(this).data("id");
 				// console.log("staffId:" +staffId);
 				// console.log("projectId:" +projectId);
 				if(role == 0){
-					alert("You not is Admin")
+					$('#myModalAdmin').modal('show')
 				}
 				else {
-					$('#myModalDelete').modal('show');
+					/*var dele =confirm("delete?");
+				if (dele == true)*/ 
 					$.ajax({
 						dataType : "json",
 						type : 'DELETE',
@@ -109,12 +146,10 @@ $(document).ready(
 						error : function(data) {
 
 						},
-						Cancel: function() {
-                            location.reload()
-						},
+						
 					});
-					
 				}
+				
 				
 			});
 			
@@ -147,11 +182,12 @@ $(document).ready(
 	                            "Save Data": function() {
 	                            	//var fields = [];
 	                            	
-	                            	
+	                            	var textArea = $("#editFormDialog").find('#txtTextArea').val();
 	                            	var textInput = $("#editFormDialog").find('#txtText').val();
 	                            	var password = $("#editFormDialog").find('#txtPassword').val();
 	                            	var checkBox = $("#editFormDialog").find('#txtCheckBox').val();
 	                            	var radio = $("#editFormDialog").find('#txtRadio').val();
+	                            	var checkBook = $("input[type='checkbox']").val()
 	                            	var idForm = $("#editFormDialog").find('#txtIdForm').val();
 	                            		var items = $("#noidung1 input").map(function(index, elm) {
 	                            		    return {type:elm.type};
@@ -169,6 +205,7 @@ $(document).ready(
 	                                        formId : idForm,
 	                                    	arrValue  : array,
 	                                        textInput : textInput,
+	                                        textArea : textArea,
 	                                        password : password,
 	                                        checkBox : checkBox,
 	                                        radio : radio
@@ -207,9 +244,6 @@ $(document).ready(
 	            $.ajax({
 	                dataType: "json",
 	                type: 'GET',
-	                /*data : JSON.stringify({
-						"id" : id,
-					}),*/
 	                url: "/ManagementUI-BE/detailData/" + id,
 	                contentType : "application/json",
 	                success: function (data) {
@@ -262,6 +296,11 @@ $(document).ready(
 	                }
 	            });
 	        });
+			var inputBox = document.getElementById('chatinput');
+
+			inputBox.onkeyup = function(){
+			    document.getElementById('printchatbox').innerHTML = inputBox.value;
+			}
 			}
 			
 			function reload() {
@@ -283,43 +322,5 @@ $(document).ready(
 			}
 			reload();
 		});
-$("#btnAddForm").click(function() {
-	var role = $("#userRole").val();
-	var nameForm= $("#nameform").val();
-	var userId = ($("#idUser").val());
-	if(role == 0){
-		alert("You not is Admin")
-	}else if(nameForm == null || nameForm== ''){
-		$('#myModal1').modal('show');
-	}
-	else{
-		var formdata=$('.h-droped-list');
-		formdata.wrap('<span class="formData"></span>');
-		var form=$('.formData').html();
-		$.ajax({
-            dataType: "json",
-            type: 'POST',
-            data:
-            JSON.stringify({
-            	userId :userId,
-                nameForm: nameForm,
-                content: form
-            }),
-            contentType : "application/json",
-            url: "/ManagementUI-BE/addForm",
-            success: function (data) {
-            	if($('#myModal').modal('show')){
-            		setTimeout(function() {
-            			 location.reload()
-            			  },1000);
-            	}else{alert("112");}
-            	//reload();
-            },
-            error: function (data) {
 
-            }
-            
-        });
-		
-	}
-	});
+

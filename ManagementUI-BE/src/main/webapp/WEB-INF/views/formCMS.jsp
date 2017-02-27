@@ -27,7 +27,7 @@
                         <td>{{nameForm}}</td>
                         <td id = "contentForm" style="display:none;">{{content}}</td>
                         <td>
-                            <button type="button" class="btn btn-primary btn-xs btnDeleteForm" data-id="{{id}}" data-toggle="modal" data-target="#myModalDelete">Delete</button>
+                            <button type="button" class="btn btn-primary btn-xs btnDeleteForm" data-id="{{id}}">Delete</button>
                             <button type="button" class="btn btn-primary btn-xs btnEditForm" data-id="{{id}}">Edit</button>
                             <button type="button" class="btn btn-primary btn-xs btnDetailForm" data-id="{{id}}">View</button>
                         </td>
@@ -56,7 +56,7 @@
                                 <li>Data</li>
                                 <li><input type="text" class="form-control" value={{textInput}}></input></li>
                                 <li><input type="password" class="form-control" value={{password}}></input></li>
-                                <li><input type="text" class="form-control" value={{arrValue}}></input></li>
+                                <li><input type="text" class="form-control" value={{textArea}}></input></li>
                             </ul>
                     </table>
 
@@ -72,7 +72,7 @@
 					<li class="list-group-item list-group-item-success"><label>Text:<input id="txtText" value=""
 							type="text" class="form-control"></label><i class="fa fa-star-o"></i></li>
 					<li class="list-group-item list-group-item-success"><label>Text
-							area<textarea  id="txtTextArea" class="form-control"></textarea>
+							area<textarea id="txtTextArea" class="form-control"></textarea>
 					</label><i class="fa fa-star-o"></i></li>
 					<li class="list-group-item list-group-item-success"><label>Password<input id="txtPassword"
 							type="password" class="form-control"></input></label><i
@@ -103,7 +103,71 @@
 		</div>
 
 	</div>
+	<div class='printchatbox' id='printchatbox'></div>
+	<input type='text' name='fname' class='chatinput' id='chatinput'>
 	<c:import url="editForm.jsp" />
-	<c:import url="modalDialog.jsp" />
+	
+<!-- dialog -->
+	<!-- Modal Add-->
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Form alert</h4>
+				</div>
+				<div class="modal-body">
+					<p>Add form success</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	
+	<!-- Modal Input Name-->
+	<div class="modal fade" id="myModal1" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Form alert</h4>
+				</div>
+				<div class="modal-body">
+					<p>Input Name Form</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- Modal Admin-->
+	<div class="modal fade" id="myModalAdmin" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Form alert</h4>
+				</div>
+				<div class="modal-body">
+					<p>You are not Admin!!!</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>	
 </body>
 </html>
