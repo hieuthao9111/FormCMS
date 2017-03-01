@@ -26,7 +26,7 @@
                         <th style="display:none;">ID</th>
                         <th>Name</th>
                         <th>Account</th>
-                        <th>Rule</th>
+                        <th>Role</th>
                         <th>Action</th>
                     </tr>
                 </thead>

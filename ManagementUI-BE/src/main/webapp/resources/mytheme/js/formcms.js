@@ -83,6 +83,9 @@ $(document).ready(
 				  $(".result").html(table);
 				  
 				});*/
+			function myFunction() {
+			    alert(id);
+			};
 
 			function action() {
 				$("#btnAddForm").click(function() {
@@ -130,8 +133,8 @@ $(document).ready(
 					$('#myModalAdmin').modal('show')
 				}
 				else {
-					/*var dele =confirm("delete?");
-				if (dele == true)*/ 
+					var dele =confirm("delete?");
+				if (dele == true) 
 					$.ajax({
 						dataType : "json",
 						type : 'DELETE',
@@ -247,18 +250,73 @@ $(document).ready(
 	                url: "/ManagementUI-BE/detailData/" + id,
 	                contentType : "application/json",
 	                success: function (data) {
-	                	 //alert(data.length);
-	                   for (i=0;i<data.length;i++) {
+//	                	var items = $.map(data,function(index, elm) {
+//	                		
+//                		return [index.textInput , index.password, index.checkBox, index.textArea];
+//	                		
+//                		});
+//	                	Array.prototype.clean = function(items) {
+//	                		  for (var i = 0; i < this.length; i++) {
+//	                		    if (this[i] == deleteValue) {         
+//	                		      this.splice(i, 1);
+//	                		      i--;
+//	                		    }
+//	                		  }
+//	                		  return this;
+//	                		};
+//	                	var text = "";
+//	                	var j;
+//	                	
+//	                	for(j =0; j<items.lenght; j++){
+//	                		text += items[j];
+//	                		
+//	                	}
+//	                	$('#detailDataFormDialog').append(text);
+	                	var obj3 = JSON.stringify(data);
+//	                	 alert(data);*/
+	                	//alert(items);	
+	                   
 	                    var template = $('#detailDataFormTpl').html();
-	                    var html = Mustache.render(template, data[i]);
-	                    $('#detailDataFormDialog').html(html);
+	                    var html = Mustache.render(template, data);
+	                    //$('#detailDataFormDialog').html(html);
+	                    $.each(data, function(key, value) {
+	                    	if(value.textInput !=null && value.textArea !=null && value.password !=null && value.checkBox !=null){
+	                        $("#detailDataFormDialog").append('<lable> ID: ' + value.id + '</lable>'+'<br>' ,
+	                        	'<lable> Text' +'<input class="form-control" type="text" value=' + value.textInput + '>'+ '</lable>',
+	                        	'<lable> Password' +'<input class="form-control" type="text" value=' + value.password + '>'+ '</lable>',
+	                        	'<lable> CheckBox' +'<input class="form-control" type="checkbox" value=' + value.checkBox + '>'+ '</lable>',
+	                        	'<lable> TextArea' +'<input class="form-control" type="text" value=' + value.textArea + '>'+ '</lable>');
+	                    }else if(value.textInput !=null && value.textArea !=null && value.password !=null){
+	                    	$("#detailDataFormDialog").append('<lable> ID: ' + value.id + '</lable>'+'<br>' ,
+	                    	'<lable> Text' +'<input class="form-control" type="text" value=' + value.textInput + '>'+ '</lable>',
+                        	'<lable> Password' +'<input class="form-control" type="text" value=' + value.password + '>'+ '</lable>',
+                        	'<lable> TextArea' +'<input class="form-control" type="text" value=' + value.textArea + '>'+ '</lable>');
+	                    }else if(value.textInput !=null && value.textArea !=null){
+	                    	$("#detailDataFormDialog").append('<lable> ID: ' + value.id + '</lable>'+'<br>' ,
+	    	                    	'<lable> Text' +'<input class="form-control" type="text" value=' + value.textInput + '>'+ '</lable>',
+	                            	'<lable> TextArea' +'<input class="form-control" type="text" value=' + value.textArea + '>'+ '</lable>');
+	    	                    }
+	                    else if(value.textInput !=null && value.password !=null){
+	                    	$("#detailDataFormDialog").append('<lable> ID: ' + value.id + '</lable>'+'<br>' ,
+	    	                    	'<lable> Text' +'<input class="form-control" type="text" value=' + value.textInput + '>'+ '</lable>',
+	                            	'<lable> Password' +'<input class="form-control" type="text" value=' + value.password + '>'+ '</lable>');
+	    	                    }
+	                    else if(value.textInput !=null){
+	                    	$("#detailDataFormDialog").append('<lable> ID: ' + value.id + '</lable>'+'<br>' ,
+	    	                    	'<lable> Text' +'<input class="form-control" type="text" value=' + value.textInput + '>'+ '</lable>');
+	    	                    }	
+	                    });
+	                    //$('#detailDataFormDialog').append(obj3);
+	                    $("#detailDataFormDialog li:empty" )
+	                    .text( "" )
+	                    .css( "background", "rgb(#fff)" );
 	                    //alert(data[i]);
 	                  
 	                    //for(i = 0; i<data.length; i++){
 	                    //}
 //	                    var d = $('#noidung');
 //	    			    d.html(d.text());
-	                   }
+	                   
 	                	 
 	    				
 	    				/*$('#detailFormDialog').text(JSON.stringify({ 

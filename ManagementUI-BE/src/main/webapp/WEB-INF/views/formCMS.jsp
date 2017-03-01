@@ -27,9 +27,9 @@
                         <td>{{nameForm}}</td>
                         <td id = "contentForm" style="display:none;">{{content}}</td>
                         <td>
-                            <button type="button" class="btn btn-primary btn-xs btnDeleteForm" data-id="{{id}}">Delete</button>
-                            <button type="button" class="btn btn-primary btn-xs btnEditForm" data-id="{{id}}">Edit</button>
-                            <button type="button" class="btn btn-primary btn-xs btnDetailForm" data-id="{{id}}">View</button>
+                            <button class="btn btn-primary btn-xs btnDeleteForm" data-id="{{id}}">Delete</button>
+                            <button class="btn btn-primary btn-xs btnEditForm" data-id="{{id}}">Edit</button>
+                            <button class="btn btn-primary btn-xs btnDetailForm" data-id="{{id}}">View</button>
                         </td>
                     </tr>
                     <!--{{/listForm}}-->
@@ -41,9 +41,13 @@
                 </tbody>
             </table>
         </div>
-        
-        <div class="col-xs-6 col-md-3"><h2>Content</h2><div id="detailDataFormDialog" class="form-horizontal"></div></div>
-<div id="detailDataFormTpl" style="display: none;">
+
+		<div class="col-xs-6 col-md-3">
+			<h2>Content</h2>
+			<div id="detailDataFormDialog" class="form-horizontal">
+			</div>
+		</div>
+		<div id="detailDataFormTpl" style="display: none;">
     <div class="panel panel-info">
         <!--                    <div class="panel-heading">
                                 <h3 class="panel-title">Sheena Kristin A.Eschor</h3>
@@ -54,8 +58,9 @@
                     <table class="table table-user-information">
                             <ul>
                                 <li>Data</li>
-                                <li><input type="text" class="form-control" value={{textInput}}></input></li>
-                                <li><input type="password" class="form-control" value={{password}}></input></li>
+                                <li>{{id}}</li>
+                                <li>{{textInput}}</li>
+                                <li>{{password}}</li>
                                 <li><input type="text" class="form-control" value={{textArea}}></input></li>
                             </ul>
                     </table>
@@ -77,14 +82,9 @@
 					<li class="list-group-item list-group-item-success"><label>Password<input id="txtPassword"
 							type="password" class="form-control"></input></label><i
 						class="fa fa-star-o"></i></li>
-					<li class="list-group-item list-group-item-success" id="txtFile"><label>File<input id="txtFile"
-							type="file" class="form-control"></input></label><i class="fa fa-star-o"></i></li>
 					<li class="list-group-item list-group-item-success"><label>Check
 							box<input  id="txtCheckBox" type="checkbox" class="form-control">
 					</label><i class="fa fa-star-o"></i></li>
-					<li class="list-group-item list-group-item-success"><label>Button<input id="txtButton"
-							type="button" class="form-control"></input></label><i
-						class="fa fa-star-o"></i></li>
 					<li class="list-group-item list-group-item-success"><label>Radio<input id="txtRadio"
 							type="radio" class="form-control"></input></label><i class="fa fa-star-o"></i></li>
 				</ul>
