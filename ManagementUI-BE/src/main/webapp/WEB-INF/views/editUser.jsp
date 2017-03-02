@@ -19,7 +19,7 @@
     <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="txtPassword" value="{{password}}">
+            <input type="password" class="form-control" id="txtPassword" value="{{password}}">
             <span style="font-size: 11px;color: red" id="errorEditTxtPassword"></span>
         </div>
     </div>

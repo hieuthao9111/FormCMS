@@ -40,16 +40,6 @@
                             <input type="password" class="form-control" id="txtPassword" name="txtPassword" placeholder="Password" required>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-3 col-sm-9">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"/>
-                                    Remember me
-                                </label>
-                            </div>
-                        </div>
-                    </div>
                     <div class="form-group last">
                         <div class="col-sm-offset-3 col-sm-9">
                             <button class="btn btn-success btn-sm">

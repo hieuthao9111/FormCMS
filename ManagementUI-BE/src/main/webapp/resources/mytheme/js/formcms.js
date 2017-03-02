@@ -217,7 +217,7 @@ $(document).ready(
 	                                    url: "/ManagementUI-BE/saveData",
 	                                    success: function (data) {
 	                                        $( "#editFormDialog" ).dialog( "close" );
-	                                        alert("Save Data successfull");
+	                                        $('#myModal').modal('show')
 	                                        reload(0, 0, "");
 	                                    },
 	                                    error: function (data) {

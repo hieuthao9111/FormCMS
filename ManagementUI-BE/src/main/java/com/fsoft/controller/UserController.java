@@ -53,9 +53,13 @@ public class UserController {
 		return new ModelAndView("addtest");
 	}
 	@RequestMapping(value = "/logout")
-	public ModelAndView logout(HttpServletRequest req) {
+	public ModelAndView logout(HttpServletRequest req ,HttpServletResponse resp) {
 		HttpSession session = req.getSession(true);
 		session.invalidate();
+		resp.setHeader("Cache-Control","no-cache"); //Forces caches to obtain a new copy of the page from the origin server
+		resp.setHeader("Cache-Control","no-store"); //Directs caches not to store the page under any circumstance
+		resp.setDateHeader("Expires", 0); //Causes the proxy cache to see the page as "stale"
+		resp.setHeader("Pragma","no-cache"); //HTTP 1.0 backward compatibility
 		return new ModelAndView("redirect:loginpage");
 	}
 	@RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
@@ -103,15 +107,16 @@ public class UserController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView login(HttpServletRequest req,HttpServletResponse resp) {
+		HttpSession session = req.getSession(true);
 		String userName = req.getParameter("txtUsername");
 		String password = req.getParameter("txtPassword");
 		User user =(User) userservice.getUserByName(userName);
-		if (user==null) {
-			return new ModelAndView("login"); }
+		if (user==null && !session.isNew()) {
+			return new ModelAndView("redirect:loginpage"); }
 		else  {
 			String passworduser = user.getPassword();
 			if( passworduser.equals(password) ) {
-				HttpSession session = req.getSession(true);
+				
 				session.setAttribute("user", user);
 				session.setAttribute("userName", user.getName());
 				session.setAttribute("userId", user.getId());

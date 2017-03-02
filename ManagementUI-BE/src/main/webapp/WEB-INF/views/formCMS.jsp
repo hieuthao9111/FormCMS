@@ -104,7 +104,7 @@
 
 	</div>
 	<div class='printchatbox' id='printchatbox'></div>
-	<input type='text' name='fname' class='chatinput' id='chatinput'>
+	<input type='text' name='fname' class='chatinput' id='chatinput' value = "">
 	<c:import url="editForm.jsp" />
 	
 <!-- dialog -->
@@ -119,7 +119,7 @@
 					<h4 class="modal-title">Form alert</h4>
 				</div>
 				<div class="modal-body">
-					<p>Add form success</p>
+					<p>Add success</p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
