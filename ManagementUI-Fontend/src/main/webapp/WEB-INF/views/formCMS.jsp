@@ -72,18 +72,21 @@
 </div>
 		<div class="mn-items col-xs-6 col-md-3">
 			<h2>Form</h2>
-			<div id="catalog" ng-app="myApp">
+			<div id="catalog">
 				<ul class="rp-draggable">
-					<li class="list-group-item list-group-item-success"><label class="pull-left">Text(Click edit)</label><input class="clickedit" type="text" /><input ng-model="text" id="txtText" value=""
-							type="text" class="form-control"><i class="fa fa-star-o"></i></li>
-					<li class="list-group-item list-group-item-success"><label class="pull-left">Text Area(Click edit)</label><input class="clickedit" type="text" /><textarea id="txtTextArea" class="form-control"></textarea><i class="fa fa-star-o"></i></li>
-					<li class="list-group-item list-group-item-success"><label class="pull-left">Password(Click edit)</label><input class="clickedit" type="text" /><input id="txtPassword"
-							type="password" class="form-control"></input><i
+					<li class="list-group-item list-group-item-success"><label>Text:<input id="txtText" value=""
+							type="text" class="form-control"></label><i class="fa fa-star-o"></i></li>
+					<li class="list-group-item list-group-item-success"><label>Text
+							area<textarea id="txtTextArea" class="form-control"></textarea>
+					</label><i class="fa fa-star-o"></i></li>
+					<li class="list-group-item list-group-item-success"><label>Password<input id="txtPassword"
+							type="password" class="form-control"></input></label><i
 						class="fa fa-star-o"></i></li>
-					<li class="list-group-item list-group-item-success"><label class="pull-left">CheckBox(Click edit)</label><input class="clickedit" type="text" /><input  id="txtCheckBox" type="checkbox" class="form-control" value="">
-					<i class="fa fa-star-o"></i></li>
-					<li class="list-group-item list-group-item-success"><label class="pull-left">Radio(Click edit)</label><input class="clickedit" type="text" /><input id="txtRadio"
-							type="radio" class="form-control"></input><i class="fa fa-star-o"></i></li>
+					<li class="list-group-item list-group-item-success"><label>Check
+							box<input  id="txtCheckBox" type="checkbox" class="form-control">
+					</label><i class="fa fa-star-o"></i></li>
+					<li class="list-group-item list-group-item-success"><label>Radio<input id="txtRadio"
+							type="radio" class="form-control"></input></label><i class="fa fa-star-o"></i></li>
 				</ul>
 			</div>
 		</div>
@@ -102,8 +105,6 @@
 	</div>
 	<div class='printchatbox' id='printchatbox'></div>
 	<input type='text' name='fname' class='chatinput' id='chatinput' value = "">
-	<input id="check1" type="checkbox" value="true" name="copyNewAddrToBilling">
-	
 	<c:import url="editForm.jsp" />
 	
 <!-- dialog -->

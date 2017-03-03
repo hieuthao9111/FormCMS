@@ -15,15 +15,12 @@
 	rel="stylesheet">
 <link href="<c:url value="/resources/mytheme/css/style-formcms.css" />"
 	rel="stylesheet">	
-
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>	
+	
 <script src="<c:url value="/resources/mytheme/js/jquery-1.11.3.min.js" />"></script>
 <script src="<c:url value="/resources/mytheme/js/mustache.js" />"></script>
 <script src="<c:url value="/resources/mytheme/js/bootstrap.min.js" />"></script>
 <script src="<c:url value="/resources/mytheme/js/jquery-ui.min.js" />"></script>
 <script src="<c:url value="../resources/mytheme/js/project.js" />"></script>
-<script src="<c:url value="../resources/mytheme/js/formcmsangular.js" />"></script>
-
 
 
 <body>

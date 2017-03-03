@@ -1,0 +1,22 @@
+body{font-family:verdana;font-size:12px;}
+h1 {padding:5px;background:#567;margin:0px;color:#fff; text-align: center}
+h2 {padding:5px;background:#89B;margin:0px;color:#fff;}
+ul,li{list-style:none;margin:0;padding:0;}
+
+.mn-items{display:block;}
+.header-favorites{display:block;}
+.mn-items li{background:#eee;padding:5px;cursor:pointer;margin-bottom:5px;position:relative;}
+
+/* .header-favorites {margin-top:20px;} */
+.header-favorites ul {margin:0;padding:0;background:#E1FFDF;overflow:hidden;}
+.header-favorites ul li{position:relative;padding:10px;border-top:2px solid #fff;border-left:2px solid #000;cursor:pointer;}
+.header-favorites ul li:first-child{border-top:none;}
+
+.mn-items li i,.header-favorites ul li i{display:block;position:absolute;right:5px;top:5px;opacity:0.5;font-size:15px;font-weight:bold;font-style:normal;}
+
+.placeholder{background:none;color:#888;cursor:default;margin-bottom:0 !important;text-align:center;border:1px solid #ccc !important;}
+.ui-sortable-helper{background:#fff; border: 50px;}
+
+.addedToFav{background:#B8FFB3 !important;}
+.addedToFav i:before{content:"\f005";}
+.header-favorites i:before{content:"\f00d";}

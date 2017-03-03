@@ -282,13 +282,13 @@ $(document).ready(
 	                    $.each(data, function(key, value) {
 	                    	if(value.textInput !=null && value.textArea !=null && value.password !=null && value.checkBox !=null){
 	                        $("#detailDataFormDialog").append('<lable> ID: ' + value.id + '</lable>'+'<br>' ,
-	                        	'<lable> Text' +'<input class="form-control" type="text" value=' + '"' + value.textInput +'"' + '>'+ '</lable>',
+	                        	'<lable> Text' +'<input class="form-control" type="text" value=' + value.textInput + '>'+ '</lable>',
 	                        	'<lable> Password' +'<input class="form-control" type="text" value=' + value.password + '>'+ '</lable>',
 	                        	'<lable> CheckBox' +'<input class="form-control" type="checkbox" value=' + value.checkBox + '>'+ '</lable>',
 	                        	'<lable> TextArea' +'<input class="form-control" type="text" value=' + value.textArea + '>'+ '</lable>');
 	                    }else if(value.textInput !=null && value.textArea !=null && value.password !=null){
 	                    	$("#detailDataFormDialog").append('<lable> ID: ' + value.id + '</lable>'+'<br>' ,
-	                    	'<lable>'+ Text + '</lable>'+'<input class="form-control" type="text" + value=' + value.textInput + '>',
+	                    	'<lable> Text' +'<input class="form-control" type="text" value=' + value.textInput + '>'+ '</lable>',
                         	'<lable> Password' +'<input class="form-control" type="text" value=' + value.password + '>'+ '</lable>',
                         	'<lable> TextArea' +'<input class="form-control" type="text" value=' + value.textArea + '>'+ '</lable>');
 	                    }else if(value.textInput !=null && value.textArea !=null){
@@ -296,20 +296,14 @@ $(document).ready(
 	    	                    	'<lable> Text' +'<input class="form-control" type="text" value=' + value.textInput + '>'+ '</lable>',
 	                            	'<lable> TextArea' +'<input class="form-control" type="text" value=' + value.textArea + '>'+ '</lable>');
 	    	                    }
-	                    else if(value.textInput !=null && value.checkBox != null){
-	                    	$("#detailDataFormDialog").append('<lable> ID: ' + value.id + '</lable>'+'<br>' ,
-	    	                    	'<lable> Text' +'<input class="form-control" type="text" value=' + '"' + value.textInput + '"' + '>'+ '</lable>',
-	    	                    	'<lable> CheckBox' +'<input class="form-control" type="checkbox" value=' + value.checkBox + '>'+ '</lable>');
-	    	                    }	
 	                    else if(value.textInput !=null && value.password !=null){
 	                    	$("#detailDataFormDialog").append('<lable> ID: ' + value.id + '</lable>'+'<br>' ,
 	    	                    	'<lable> Text' +'<input class="form-control" type="text" value=' + value.textInput + '>'+ '</lable>',
 	                            	'<lable> Password' +'<input class="form-control" type="text" value=' + value.password + '>'+ '</lable>');
 	    	                    }
-	                    	
 	                    else if(value.textInput !=null){
 	                    	$("#detailDataFormDialog").append('<lable> ID: ' + value.id + '</lable>'+'<br>' ,
-	    	                    	'<lable> Text' +'<input class="form-control" type="text" value=' + '"' + value.textInput + '"' + '>'+ '</lable>');
+	    	                    	'<lable> Text' +'<input class="form-control" type="text" value=' + value.textInput + '>'+ '</lable>');
 	    	                    }	
 	                    });
 	                    //$('#detailDataFormDialog').append(obj3);
@@ -360,38 +354,11 @@ $(document).ready(
 	                }
 	            });
 	        });
-			
 			var inputBox = document.getElementById('chatinput');
 
 			inputBox.onkeyup = function(){
 			    document.getElementById('printchatbox').innerHTML = inputBox.value;
 			}
-			var defaultText = '"Input Lable"';
-			//edit lable form
-			function endEdit(e) {
-			    var input = $(e.target),
-			        label = input && input.prev();
-
-			    label.text(input.val() === '' ? defaultText : input.val());
-			    input.hide();
-			    label.show();
-			}
-
-			$('.clickedit').hide()
-			.focusout(endEdit)
-			.keyup(function (e) {
-			    if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
-			        endEdit(e);
-			        return false;
-			    } else {
-			        return true;
-			    }
-			})
-			.prev().click(function () {
-			    $(this).hide();
-			    $(this).next().show().focus();
-			});
-			
 			}
 			
 			function reload() {
