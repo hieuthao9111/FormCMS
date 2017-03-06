@@ -14,5 +14,6 @@ import com.fsoft.entity.DataForm;
 public interface DataFormDao extends JpaRepository<DataForm, Long>{
 	@Query("from DataForm where formId=:id")
 	List<DataForm> getDataByFormId(@Param("id")Long id);
-
+	@Query("from DataForm where account=:user")
+	List<DataForm> getDataByUserName(@Param("user")String account);
 }

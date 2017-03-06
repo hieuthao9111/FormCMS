@@ -16,7 +16,7 @@
 <link href="<c:url value="/resources/mytheme/css/style-formcms.css" />"
 	rel="stylesheet">	
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>	
+<script src="<c:url value="/resources/mytheme/js/angular-1.0.6.min.js" />"></script>	
 <script src="<c:url value="/resources/mytheme/js/jquery-1.11.3.min.js" />"></script>
 <script src="<c:url value="/resources/mytheme/js/mustache.js" />"></script>
 <script src="<c:url value="/resources/mytheme/js/bootstrap.min.js" />"></script>
@@ -49,7 +49,7 @@
       </ul>
       <form action="logout">
       <ul class="nav navbar-nav navbar-right">
-            <li><a><input class="form-control" value="<%=session.getAttribute("userName") %>" disabled></a></li>
+            <li><a><input class="form-control" id = "user" value="<%=session.getAttribute("userName") %>" disabled></a></li>
             <li style = "display: none"><a><input class="form-control" type="text" id = "idUser" value="<%=session.getAttribute("userId") %>" disabled></a></li>
             <li style = "display: none"><a><input class="form-control" type="text" id = "userRole" value="<%=session.getAttribute("userRole") %>" disabled></a></li>
             <li><a><input class="btn btn-primary" type="submit" value="Logout" /></a></li>

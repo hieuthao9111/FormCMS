@@ -17,23 +17,18 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "dataForm")
 public class DataForm {
 	private Long id;
+	private String account;
 	private String arrValue;
 	private String textInput;
 	private String textArea;
 	private String password;
-	private String file;
+	private String lable;
 	private String checkBox;
 	private String radio;
 	private String type;
 	private Long formId;
 	private Form form;
 	
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -51,6 +46,27 @@ public class DataForm {
 	}
 	public void setForm(Form form) {
 		this.form = form;
+	}
+	@Column
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	@Column
+	public String getAccount() {
+		return account;
+	}
+	public void setAccount(String account) {
+		this.account = account;
+	}
+	@Column
+	public String getLable() {
+		return lable;
+	}
+	public void setLable(String lable) {
+		this.lable = lable;
 	}
 	@Column
 	public String getArrValue() {
@@ -80,13 +96,6 @@ public class DataForm {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	@Column(name = "file")
-	public String getFile() {
-		return file;
-	}
-	public void setFile(String file) {
-		this.file = file;
-	}
 	@Column(name = "checkBox")
 	public String getCheckBox() {
 		return checkBox;
@@ -109,17 +118,17 @@ public class DataForm {
 		this.formId = formId;
 	}
 
-	
-	public DataForm(Long id, String arrValue, String textInput,
-			String textArea, String password, String file, String checkBox,
+	public DataForm(Long id, String account, String arrValue, String textInput,
+			String textArea, String password, String lable, String checkBox,
 			String radio, String type, Long formId, Form form) {
 		super();
 		this.id = id;
+		this.account = account;
 		this.arrValue = arrValue;
 		this.textInput = textInput;
 		this.textArea = textArea;
 		this.password = password;
-		this.file = file;
+		this.lable = lable;
 		this.checkBox = checkBox;
 		this.radio = radio;
 		this.type = type;

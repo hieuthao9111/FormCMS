@@ -184,12 +184,13 @@ $(document).ready(
 	                        buttons: {
 	                            "Save Data": function() {
 	                            	//var fields = [];
-	                            	
+	                            	var user = $('#user').val();
 	                            	var textArea = $("#editFormDialog").find('#txtTextArea').val();
 	                            	var textInput = $("#editFormDialog").find('#txtText').val();
 	                            	var password = $("#editFormDialog").find('#txtPassword').val();
 	                            	var checkBox = $("#editFormDialog").find('#txtCheckBox').val();
 	                            	var radio = $("#editFormDialog").find('#txtRadio').val();
+	                            	var lable = $("#editFormDialog").find('#txtLable').text();
 	                            	var checkBook = $("input[type='checkbox']").val()
 	                            	var idForm = $("#editFormDialog").find('#txtIdForm').val();
 	                            		var items = $("#noidung1 input").map(function(index, elm) {
@@ -206,6 +207,8 @@ $(document).ready(
 	                                    data:
 	                                    JSON.stringify({
 	                                        formId : idForm,
+	                                        account : user,
+	                                        lable : lable,
 	                                    	arrValue  : array,
 	                                        textInput : textInput,
 	                                        textArea : textArea,
@@ -218,7 +221,7 @@ $(document).ready(
 	                                    success: function (data) {
 	                                        $( "#editFormDialog" ).dialog( "close" );
 	                                        $('#myModal').modal('show')
-	                                        reload(0, 0, "");
+	                                        reload();
 	                                    },
 	                                    error: function (data) {
 
@@ -279,36 +282,37 @@ $(document).ready(
 	                    var template = $('#detailDataFormTpl').html();
 	                    var html = Mustache.render(template, data);
 	                    //$('#detailDataFormDialog').html(html);
+	                    var user = $('#user').val();
 	                    $.each(data, function(key, value) {
-	                    	if(value.textInput !=null && value.textArea !=null && value.password !=null && value.checkBox !=null){
-	                        $("#detailDataFormDialog").append('<lable> ID: ' + value.id + '</lable>'+'<br>' ,
+	                    	if(value.account == user && value.textInput !=null && value.textArea !=null && value.password !=null && value.checkBox !=null){
+	                        $("#detailDataFormDialog").append('<lable> ID: ' + value.lable + '</lable>'+'<br>' ,
 	                        	'<lable> Text' +'<input class="form-control" type="text" value=' + '"' + value.textInput +'"' + '>'+ '</lable>',
 	                        	'<lable> Password' +'<input class="form-control" type="text" value=' + value.password + '>'+ '</lable>',
 	                        	'<lable> CheckBox' +'<input class="form-control" type="checkbox" value=' + value.checkBox + '>'+ '</lable>',
 	                        	'<lable> TextArea' +'<input class="form-control" type="text" value=' + value.textArea + '>'+ '</lable>');
-	                    }else if(value.textInput !=null && value.textArea !=null && value.password !=null){
-	                    	$("#detailDataFormDialog").append('<lable> ID: ' + value.id + '</lable>'+'<br>' ,
-	                    	'<lable>'+ Text + '</lable>'+'<input class="form-control" type="text" + value=' + value.textInput + '>',
+	                    }else if(value.account == user && value.textInput !=null && value.textArea !=null && value.password !=null){
+	                    	$("#detailDataFormDialog").append('<lable> ID: ' + value.lable + '</lable>'+'<br>' ,
+	                    	'<lable> Text' +'<input class="form-control" type="text" + value=' + value.textInput + '>'+'</lable>',
                         	'<lable> Password' +'<input class="form-control" type="text" value=' + value.password + '>'+ '</lable>',
                         	'<lable> TextArea' +'<input class="form-control" type="text" value=' + value.textArea + '>'+ '</lable>');
-	                    }else if(value.textInput !=null && value.textArea !=null){
-	                    	$("#detailDataFormDialog").append('<lable> ID: ' + value.id + '</lable>'+'<br>' ,
+	                    }else if(value.account == user && value.textInput !=null && value.textArea !=null){
+	                    	$("#detailDataFormDialog").append('<lable> ID: ' + value.lable + '</lable>'+'<br>' ,
 	    	                    	'<lable> Text' +'<input class="form-control" type="text" value=' + value.textInput + '>'+ '</lable>',
 	                            	'<lable> TextArea' +'<input class="form-control" type="text" value=' + value.textArea + '>'+ '</lable>');
 	    	                    }
-	                    else if(value.textInput !=null && value.checkBox != null){
-	                    	$("#detailDataFormDialog").append('<lable> ID: ' + value.id + '</lable>'+'<br>' ,
+	                    else if(value.account == user && value.textInput !=null && value.checkBox != null){
+	                    	$("#detailDataFormDialog").append('<lable> ID: ' + value.lable + '</lable>'+'<br>' ,
 	    	                    	'<lable> Text' +'<input class="form-control" type="text" value=' + '"' + value.textInput + '"' + '>'+ '</lable>',
 	    	                    	'<lable> CheckBox' +'<input class="form-control" type="checkbox" value=' + value.checkBox + '>'+ '</lable>');
 	    	                    }	
-	                    else if(value.textInput !=null && value.password !=null){
-	                    	$("#detailDataFormDialog").append('<lable> ID: ' + value.id + '</lable>'+'<br>' ,
+	                    else if(value.account == user && value.textInput !=null && value.password !=null){
+	                    	$("#detailDataFormDialog").append('<lable> ID: ' + value.lable + '</lable>'+'<br>' ,
 	    	                    	'<lable> Text' +'<input class="form-control" type="text" value=' + value.textInput + '>'+ '</lable>',
 	                            	'<lable> Password' +'<input class="form-control" type="text" value=' + value.password + '>'+ '</lable>');
 	    	                    }
 	                    	
-	                    else if(value.textInput !=null){
-	                    	$("#detailDataFormDialog").append('<lable> ID: ' + value.id + '</lable>'+'<br>' ,
+	                    else if(value.account == user && value.textInput !=null){
+	                    	$("#detailDataFormDialog").append('<lable>' + value.lable + '</lable>'+'<br>' ,
 	    	                    	'<lable> Text' +'<input class="form-control" type="text" value=' + '"' + value.textInput + '"' + '>'+ '</lable>');
 	    	                    }	
 	                    });

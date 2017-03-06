@@ -5,7 +5,6 @@
 <html>
 <c:import url="header1.jsp" />
 <script src="<c:url value="../resources/mytheme/js/formcms.js" />"></script>
-</head>
 <body>
 	<div class="row">
 	<h1>FORM CMS</h1><br>
@@ -74,15 +73,15 @@
 			<h2>Form</h2>
 			<div id="catalog" ng-app="myApp">
 				<ul class="rp-draggable">
-					<li class="list-group-item list-group-item-success"><label class="pull-left">Text(Click edit)</label><input class="clickedit" type="text" /><input ng-model="text" id="txtText" value=""
+					<li class="list-group-item list-group-item-success"><label class="pull-left" id = "txtLable">Text(Click edit)</label><input class="clickedit" type="text" id= "txtLable" /><input ng-model="text" id="txtText" value=""
 							type="text" class="form-control"><i class="fa fa-star-o"></i></li>
-					<li class="list-group-item list-group-item-success"><label class="pull-left">Text Area(Click edit)</label><input class="clickedit" type="text" /><textarea id="txtTextArea" class="form-control"></textarea><i class="fa fa-star-o"></i></li>
-					<li class="list-group-item list-group-item-success"><label class="pull-left">Password(Click edit)</label><input class="clickedit" type="text" /><input id="txtPassword"
+					<li class="list-group-item list-group-item-success"><label class="pull-left" id = "txtLable">Text Area(Click edit)</label><input class="clickedit" type="text" id= "txtLable"/><textarea id="txtTextArea" class="form-control"></textarea><i class="fa fa-star-o"></i></li>
+					<li class="list-group-item list-group-item-success"><label class="pull-left" id = "txtLable">Password(Click edit)</label><input class="clickedit" type="text" id= "txtLable"/><input id="txtPassword"
 							type="password" class="form-control"></input><i
 						class="fa fa-star-o"></i></li>
-					<li class="list-group-item list-group-item-success"><label class="pull-left">CheckBox(Click edit)</label><input class="clickedit" type="text" /><input  id="txtCheckBox" type="checkbox" class="form-control" value="">
+					<li class="list-group-item list-group-item-success"><label class="pull-left" id = "txtLable">CheckBox(Click edit)</label><input class="clickedit" type="text" id= "txtLable"/><input  id="txtCheckBox" type="checkbox" class="form-control" value="">
 					<i class="fa fa-star-o"></i></li>
-					<li class="list-group-item list-group-item-success"><label class="pull-left">Radio(Click edit)</label><input class="clickedit" type="text" /><input id="txtRadio"
+					<li class="list-group-item list-group-item-success"><label class="pull-left" id = "txtLable">Radio(Click edit)</label><input class="clickedit" type="text" id= "txtLable"/><input id="txtRadio"
 							type="radio" class="form-control"></input><i class="fa fa-star-o"></i></li>
 				</ul>
 			</div>
@@ -103,6 +102,25 @@
 	<div class='printchatbox' id='printchatbox'></div>
 	<input type='text' name='fname' class='chatinput' id='chatinput' value = "">
 	<input id="check1" type="checkbox" value="true" name="copyNewAddrToBilling">
+	
+	<div ng-app="myApp" ng-controller="myCtrl">
+<script type="text/javascript">
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+	$scope.url = '/ManagementUI-BE/list';
+	$http.get($scope.url,{header : {'Content-Type' : 'application/json; charset=UTF-8'}}).then(function(response) {
+        $scope.names= response.data;
+        console.log($scope.names);
+     }); 
+});
+</script>
+<p>Select a car:</p>
+
+<select ng-model="userName" ng-options="x for x in names"></select>
+
+<h1>You selected: {{userName}}</h1>
+
+</div>
 	
 	<c:import url="editForm.jsp" />
 	

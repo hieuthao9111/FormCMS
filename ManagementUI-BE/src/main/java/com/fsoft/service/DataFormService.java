@@ -30,4 +30,9 @@ public class DataFormService {
 	public List<DataForm> getDataByFormId(Long id){
 		return dataFormDao.getDataByFormId(id);
 	}
+	
+	@Transactional
+	public List<DataForm> getDataByUserName(String account){
+		return dataFormDao.getDataByUserName(account);
+	}
 }
