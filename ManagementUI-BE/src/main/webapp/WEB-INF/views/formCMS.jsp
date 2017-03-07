@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <c:import url="header1.jsp" />
-<script src="<c:url value="../resources/mytheme/js/formcms.js" />"></script>
+
 <body>
 	<div class="row">
 	<h1>FORM CMS</h1><br>
@@ -71,7 +71,7 @@
 </div>
 		<div class="mn-items col-xs-6 col-md-3">
 			<h2>Form</h2>
-			<div id="catalog" ng-app="myApp">
+			<div id="catalog">
 				<ul class="rp-draggable">
 					<li class="list-group-item list-group-item-success"><label class="pull-left" id = "txtLable">Text(Click edit)</label><input class="clickedit" type="text" id= "txtLable" /><input ng-model="text" id="txtText" value=""
 							type="text" class="form-control"><i class="fa fa-star-o"></i></li>
@@ -91,7 +91,10 @@
 			<ul class="h-droped-list">
 				<li class="placeholder"><br> Add your items here</li>
 			</ul>
-			<div class="row">
+			<div class="row" ng-app="myApp" ng-controller="myCtrl">
+				<div class="col-md-12"><label>User Name Use</label></div>
+				<div class="col-md-12"><select data-role="listview" class="form-control col-md-6" ng-model="userNameUse" ng-options="x for x in names"></select></div>
+				<div class="col-md-12" style="display: none"><input type="text" class="form-control col-md-6" id="userUse" value = "{{userNameUse}}" readonly="readonly"></input></div>
 				<div class="col-md-12"><label for="nameform">Form Name</label></div>
 				<div class="col-md-12"><input type="text" class="form-control col-md-6" id="nameform"></input></div>
 				<div class="col-md-12" style="margin: 2px;"><button id="btnAddForm" class="btn btn-info" type="submit">Save</button></div>
@@ -102,25 +105,6 @@
 	<div class='printchatbox' id='printchatbox'></div>
 	<input type='text' name='fname' class='chatinput' id='chatinput' value = "">
 	<input id="check1" type="checkbox" value="true" name="copyNewAddrToBilling">
-	
-	<div ng-app="myApp" ng-controller="myCtrl">
-<script type="text/javascript">
-var app = angular.module('myApp', []);
-app.controller('myCtrl', function($scope, $http) {
-	$scope.url = '/ManagementUI-BE/list';
-	$http.get($scope.url,{header : {'Content-Type' : 'application/json; charset=UTF-8'}}).then(function(response) {
-        $scope.names= response.data;
-        console.log($scope.names);
-     }); 
-});
-</script>
-<p>Select a car:</p>
-
-<select ng-model="userName" ng-options="x for x in names"></select>
-
-<h1>You selected: {{userName}}</h1>
-
-</div>
 	
 	<c:import url="editForm.jsp" />
 	

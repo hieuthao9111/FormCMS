@@ -18,6 +18,10 @@ public class UserService {
 	public List<User> getAllUser() {
 		return userdao.findAll();
 	}
+	
+	public List<String> getAllUserByName(){
+		return userdao.getAllUserByName();
+	}
 
 	public User addUser(User user) {
 		return userdao.save(user);

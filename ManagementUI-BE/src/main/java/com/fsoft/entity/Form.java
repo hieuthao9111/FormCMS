@@ -22,6 +22,7 @@ public class Form {
 	private String nameForm;
 	private String content;
 	private Long userId;
+	private String UserUseForm;
 	private User user;
 	private Set<DataForm> dataFormId;
 
@@ -46,6 +47,15 @@ public class Form {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	@Column
+	public String getUserUseForm() {
+		return UserUseForm;
+	}
+
+	public void setUserUseForm(String userUseForm) {
+		UserUseForm = userUseForm;
 	}
 
 	@Column(name = "nameForm")
@@ -85,13 +95,16 @@ public class Form {
 		this.dataFormId = dataFormId;
 	}
 
+	
+
 	public Form(Long id, String nameForm, String content, Long userId,
-			User user, Set<DataForm> dataFormId) {
+			String userUseForm, User user, Set<DataForm> dataFormId) {
 		super();
 		this.id = id;
 		this.nameForm = nameForm;
 		this.content = content;
 		this.userId = userId;
+		UserUseForm = userUseForm;
 		this.user = user;
 		this.dataFormId = dataFormId;
 	}

@@ -1,6 +1,7 @@
 package com.fsoft.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -70,6 +71,11 @@ public class UserController {
 		result.put("list", userservice.getAllUser());
 		return result;
 	}
+	@RequestMapping(value = "/listName", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public List<String> getAllAccount() {
+		return userservice.getAllUserByName();
+	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody
@@ -111,6 +117,7 @@ public class UserController {
 		String userName = req.getParameter("txtUsername");
 		String password = req.getParameter("txtPassword");
 		User user =(User) userservice.getUserByName(userName);
+		
 		if (user==null && !session.isNew()) {
 			return new ModelAndView("redirect:loginpage"); }
 		else  {

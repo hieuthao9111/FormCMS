@@ -92,6 +92,7 @@ $(document).ready(
 					var role = $("#userRole").val();
 					var nameForm= $("#nameform").val();
 					var userId = ($("#idUser").val());
+					var userUse = ($("#userUse").val());
 					if(role == 0){
 						alert("You not is Admin")
 					}else if(nameForm == null || nameForm== ''){
@@ -108,6 +109,7 @@ $(document).ready(
 				            JSON.stringify({
 				            	userId :userId,
 				                nameForm: nameForm,
+				                userUseForm: userUse,
 				                content: form
 				            }),
 				            contentType : "application/json",
@@ -397,7 +399,23 @@ $(document).ready(
 			});
 			
 			}
-			
+			function reloadForm() {
+				$.ajax({
+					dataType : "json",
+					type : 'GET',
+					url : "/ManagementUI-BE/FormUser",
+					contentType : "application/json",
+					success : function(data) {
+						formatList(data.listForm);
+						var template = $('#tplListUser').html();
+						var html = Mustache.render(template, data);
+						$('#listFormUser').html(html);
+						action();
+					},
+					error : function(data) {
+					}
+				});
+			}
 			function reload() {
 				$.ajax({
 					dataType : "json",

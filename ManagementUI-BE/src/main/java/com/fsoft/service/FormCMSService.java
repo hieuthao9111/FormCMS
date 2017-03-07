@@ -28,4 +28,7 @@ public class FormCMSService {
 	public Form getFormById(Long id){
 		return formCMSdao.findOne(id);
 	}
+	public List<Form> getAllFormUser(String userName){
+		return formCMSdao.getAllFormByUserForm(userName);
+	}
 }

@@ -1,7 +1,11 @@
 package com.fsoft.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+
+
 
 
 
@@ -25,6 +29,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fsoft.entity.Form;
 import com.fsoft.entity.User;
 import com.fsoft.service.FormCMSService;
+import com.fsoft.service.UserService;
 
 
 @Controller
@@ -32,19 +37,35 @@ public class FormCMSController {
 	
 	@Autowired
 	FormCMSService formCMSService;
+	@Autowired
+	UserService userService;
 	
 	@RequestMapping(value = "/Form")
 	public ModelAndView form(HttpServletRequest req) {
 		HttpSession session = req.getSession(true);
 		User user = (User) session.getAttribute("user");
 		int role = user.getRule();
-		if(role != 1 && role != 0 ){
-			return new ModelAndView("loginpage");
+		if(role == 1){
+			return new ModelAndView("formCMS");
+		}else if(role == 0 || role ==1){
+		return new ModelAndView("listFormCMSUse");
 		}else{
-		return new ModelAndView("formCMS");
+		return new ModelAndView("loginpage");
 		}
 	}
 	
+	@RequestMapping(value = "/FormUser")
+	@ResponseBody
+	public List<Form> formUser(HttpServletRequest req) {
+		HttpSession session = req.getSession(true);
+		User user = (User) session.getAttribute("user");
+		String userName = user.getName();
+		System.out.println(user.getName());
+		
+		return formCMSService.getAllFormUser(userName);
+	
+	}
+
 	@RequestMapping(value= "/addForm", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody
 	public Object addForm(@RequestBody Form form){
