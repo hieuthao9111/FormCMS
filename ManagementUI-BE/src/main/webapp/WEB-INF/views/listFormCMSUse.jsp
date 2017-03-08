@@ -4,13 +4,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <c:import url="header1.jsp" />
-
+<script src="<c:url value="../resources/mytheme/js/formcmsuser.js" />"></script>
 <body>
 	<div class="row">
 	<h1>FORM CMS</h1><br>
-	<div class="col-xs-4 col-md-3"><h2>List Form</h2><div id="listFormUser"></div></div>
+	<div class = "col-xs-8 col-md-5"><h2>List Form</h2><div id="listFormUser"></div>
+	<div id="pagination"></div>
+	</div>
+	
         <div id="tplListUser" style="display: none;">
-            <table class="table table-striped">
+            <table class="table table-striped" id="content">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -26,7 +29,6 @@
                         <td>{{nameForm}}</td>
                         <td id = "contentForm" style="display:none;">{{content}}</td>
                         <td>
-                            <button class="btn btn-primary btn-xs btnDeleteForm" data-id="{{id}}">Delete</button>
                             <button class="btn btn-primary btn-xs btnEditForm" data-id="{{id}}">Edit</button>
                             <button class="btn btn-primary btn-xs btnDetailForm" data-id="{{id}}">View</button>
                         </td>
@@ -40,13 +42,18 @@
                 </tbody>
             </table>
         </div>
+        
 
-		<div class="col-xs-6 col-md-3">
+		<div class = "col-xs-12 col-md-7">
 			<h2>Content</h2>
 			<div id="detailDataFormDialog" class="form-horizontal">
+			<table id = "listData" class="table table-bordered">
+				
+			</table>
 			</div>
 		</div>
 	</div>
+	
 	<c:import url="editForm.jsp" />
 	
 <!-- dialog -->

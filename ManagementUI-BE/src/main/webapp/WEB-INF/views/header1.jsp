@@ -14,20 +14,27 @@
 <link href="<c:url value="/resources/mytheme/css/jquery-ui.min.css" />"
 	rel="stylesheet">
 <link href="<c:url value="/resources/mytheme/css/style-formcms.css" />"
-	rel="stylesheet">	
+	rel="stylesheet">
+	<link href="<c:url value="/resources/mytheme/css/pagination.css" />"
+	rel="stylesheet">
+	<link href="<c:url value="/resources/mytheme/css/style-formcms.css" />"
+	rel="stylesheet">
+	<link href="<c:url value="/resources/mytheme/css/jquery.dataTables.min.css" />"
+	rel="stylesheet">		
 
 <script src="<c:url value="/resources/mytheme/js/angular-1.0.6.min.js" />"></script>	
 <script src="<c:url value="/resources/mytheme/js/jquery-1.11.3.min.js" />"></script>
+<script src="<c:url value="/resources/mytheme/js/jquery-2.1.4.min.js" />"></script>
 <script src="<c:url value="/resources/mytheme/js/mustache.js" />"></script>
 <script src="<c:url value="/resources/mytheme/js/bootstrap.min.js" />"></script>
 <script src="<c:url value="/resources/mytheme/js/jquery-ui.min.js" />"></script>
 <script src="<c:url value="../resources/mytheme/js/project.js" />"></script>
 <script src="<c:url value="../resources/mytheme/js/formcmsangular.js" />"></script>
-<script src="<c:url value="../resources/mytheme/js/formcms.js" />"></script>
-
+<script src="<c:url value="../resources/mytheme/js/jquery.simplePagination.js" />"></script>
+<script src="<c:url value="../resources/mytheme/js/jquery.dataTables.min.js" />"></script>
 
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-static-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -45,6 +52,7 @@
       <ul class="nav navbar-nav">
         <li><a href="/ManagementUI-BE/listUser">List User<span class="sr-only">(current)</span></a></li>
         <li><a href="/ManagementUI-BE/Form">Form<span class="sr-only">(current)</span></a></li>
+        <li><a href="/ManagementUI-BE/ListFormUser">Form User Edit<span class="sr-only">(current)</span></a></li>
         
       </ul>
       <form action="logout">

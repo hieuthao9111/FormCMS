@@ -1,18 +1,7 @@
 package com.fsoft.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
-
-
-
-
-
-
-
-
-
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -48,22 +37,27 @@ public class FormCMSController {
 		if(role == 1){
 			return new ModelAndView("formCMS");
 		}else if(role == 0 || role ==1){
-		return new ModelAndView("listFormCMSUse");
+		return new ModelAndView("redirect:ListFormUser");
 		}else{
 		return new ModelAndView("loginpage");
 		}
 	}
 	
+	@RequestMapping(value = "/ListFormUser")
+	public ModelAndView listFormUSer(){
+		return new ModelAndView("listFormCMSUse");
+	}
+	
 	@RequestMapping(value = "/FormUser")
 	@ResponseBody
-	public List<Form> formUser(HttpServletRequest req) {
+	public Map<String, Object> formUser(HttpServletRequest req) {
+		Map<String, Object> result = new HashMap<String, Object>();
 		HttpSession session = req.getSession(true);
 		User user = (User) session.getAttribute("user");
 		String userName = user.getName();
-		System.out.println(user.getName());
+		result.put("listForm", formCMSService.getAllFormUser(userName));
 		
-		return formCMSService.getAllFormUser(userName);
-	
+		return result;
 	}
 
 	@RequestMapping(value= "/addForm", method = RequestMethod.POST, produces = "application/json")

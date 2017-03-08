@@ -367,12 +367,12 @@ $(document).ready(
 	            });
 	        });
 			
-			var inputBox = document.getElementById('chatinput');
+/*			var inputBox = document.getElementById('chatinput');
 
 			inputBox.onkeyup = function(){
 			    document.getElementById('printchatbox').innerHTML = inputBox.value;
 			}
-			var defaultText = '"Input Lable"';
+			var defaultText = '"Input Lable"';*/
 			//edit lable form
 			function endEdit(e) {
 			    var input = $(e.target),
@@ -397,24 +397,31 @@ $(document).ready(
 			    $(this).hide();
 			    $(this).next().show().focus();
 			});
+			//paging
+			jQuery(function($) {
+                var items = $("#content tbody tr");
+                var numItems = items.length;
+                var perPage = 5;
+                // Only show the first 2 (or first `per_page`) items initially.
+                items.slice(perPage).hide();
+                // Now setup the pagination using the `#pagination` div.
+                $("#pagination").pagination({
+                    items: numItems,
+                    itemsOnPage: perPage,
+                    cssStyle: "light-theme",
+                    // This is the actual page changing functionality.
+                    onPageClick: function(pageNumber) {
+                        // We need to show and hide `tr`s appropriately.
+                        var showFrom = perPage * (pageNumber - 1);
+                        var showTo = showFrom + perPage;
+                        // We'll first hide everything...
+                        items.hide()
+                             // ... and then only show the appropriate rows.
+                             .slice(showFrom, showTo).show();
+                    }
+                });
+            });
 			
-			}
-			function reloadForm() {
-				$.ajax({
-					dataType : "json",
-					type : 'GET',
-					url : "/ManagementUI-BE/FormUser",
-					contentType : "application/json",
-					success : function(data) {
-						formatList(data.listForm);
-						var template = $('#tplListUser').html();
-						var html = Mustache.render(template, data);
-						$('#listFormUser').html(html);
-						action();
-					},
-					error : function(data) {
-					}
-				});
 			}
 			function reload() {
 				$.ajax({

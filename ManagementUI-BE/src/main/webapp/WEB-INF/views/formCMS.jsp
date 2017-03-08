@@ -2,15 +2,17 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <c:import url="header1.jsp" />
-
+<script src="<c:url value="../resources/mytheme/js/formcms.js" />"></script>
 <body>
 	<div class="row">
 	<h1>FORM CMS</h1><br>
-	<div class="col-xs-4 col-md-3"><h2>List Form</h2><div id="listForm"></div></div>
+	<div class="col-xs-4 col-md-3"><h2>List Form</h2><div id="listForm"></div>
+	<div id = "pagination"></div></div>
         <div id="tplList" style="display: none;">
-            <table class="table table-striped">
+            <table class="table table-striped" id="content">
                 <thead>
                     <tr>
                         <th>#</th>
