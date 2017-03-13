@@ -6,6 +6,7 @@ $(document).ready(function() {
 		});
 		
 	}
+	
 
 	function action() {
 		$("#btnAddUser").click(function(){
@@ -185,8 +186,14 @@ $(document).ready(function() {
                 }
             });
         });
+		//Search database
+		oTable = $('#listDataUser').DataTable();   //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
+		$('#myInputTextField').keyup(function(){
+		      oTable.search($(this).val()).draw() ;
+		})
 		
 	}
+	
 	function table(){
 		  $('#myTable').dataTable();
 	}
@@ -209,6 +216,7 @@ $(document).ready(function() {
 	}
 	reload();
 });
+
 
 
 

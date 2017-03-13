@@ -19,11 +19,12 @@
         </div>
         <div id="listProject"></div>
         <div id="tplList" style="display: none;">
-            <table class="table table-striped">
+            <table class="table table-striped" id="listDataUser">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th style="display:none;">ID</th>
+                        <th style="display:none;">Passwrord</th>
                         <th>Name</th>
                         <th>Account</th>
                         <th>Role</th>
@@ -56,6 +57,7 @@
 
                 </tbody>
             </table>
+            
 			
         </div>
         <c:import url="editUser.jsp" />
