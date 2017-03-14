@@ -287,34 +287,34 @@ $(document).ready(
 	                    var user = $('#user').val();
 	                    $.each(data, function(key, value) {
 	                    	if(value.account == user && value.textInput !=null && value.textArea !=null && value.password !=null && value.checkBox !=null){
-	                        $("#detailDataFormDialog").append('<lable> ID: ' + value.lable + '</lable>'+'<br>' ,
+	                        $("#detailDataFormDialog").append('<lable> ID: ' + value.id + '</lable>'+'<br>' ,
 	                        	'<lable> Text' +'<input class="form-control" type="text" value=' + '"' + value.textInput +'"' + '>'+ '</lable>',
 	                        	'<lable> Password' +'<input class="form-control" type="text" value=' + value.password + '>'+ '</lable>',
 	                        	'<lable> CheckBox' +'<input class="form-control" type="checkbox" value=' + value.checkBox + '>'+ '</lable>',
 	                        	'<lable> TextArea' +'<input class="form-control" type="text" value=' + value.textArea + '>'+ '</lable>');
 	                    }else if(value.account == user && value.textInput !=null && value.textArea !=null && value.password !=null){
-	                    	$("#detailDataFormDialog").append('<lable> ID: ' + value.lable + '</lable>'+'<br>' ,
+	                    	$("#detailDataFormDialog").append('<lable> ID: ' + value.id + '</lable>'+'<br>' ,
 	                    	'<lable> Text' +'<input class="form-control" type="text" + value=' + value.textInput + '>'+'</lable>',
                         	'<lable> Password' +'<input class="form-control" type="text" value=' + value.password + '>'+ '</lable>',
                         	'<lable> TextArea' +'<input class="form-control" type="text" value=' + value.textArea + '>'+ '</lable>');
 	                    }else if(value.account == user && value.textInput !=null && value.textArea !=null){
-	                    	$("#detailDataFormDialog").append('<lable> ID: ' + value.lable + '</lable>'+'<br>' ,
+	                    	$("#detailDataFormDialog").append('<lable> ID: ' + value.id + '</lable>'+'<br>' ,
 	    	                    	'<lable> Text' +'<input class="form-control" type="text" value=' + value.textInput + '>'+ '</lable>',
 	                            	'<lable> TextArea' +'<input class="form-control" type="text" value=' + value.textArea + '>'+ '</lable>');
 	    	                    }
 	                    else if(value.account == user && value.textInput !=null && value.checkBox != null){
-	                    	$("#detailDataFormDialog").append('<lable> ID: ' + value.lable + '</lable>'+'<br>' ,
+	                    	$("#detailDataFormDialog").append('<lable> ID: ' + value.id + '</lable>'+'<br>' ,
 	    	                    	'<lable> Text' +'<input class="form-control" type="text" value=' + '"' + value.textInput + '"' + '>'+ '</lable>',
 	    	                    	'<lable> CheckBox' +'<input class="form-control" type="checkbox" value=' + value.checkBox + '>'+ '</lable>');
 	    	                    }	
 	                    else if(value.account == user && value.textInput !=null && value.password !=null){
-	                    	$("#detailDataFormDialog").append('<lable> ID: ' + value.lable + '</lable>'+'<br>' ,
+	                    	$("#detailDataFormDialog").append('<lable> ID: ' + value.id + '</lable>'+'<br>' ,
 	    	                    	'<lable> Text' +'<input class="form-control" type="text" value=' + value.textInput + '>'+ '</lable>',
 	                            	'<lable> Password' +'<input class="form-control" type="text" value=' + value.password + '>'+ '</lable>');
 	    	                    }
 	                    	
 	                    else if(value.account == user && value.textInput !=null){
-	                    	$("#detailDataFormDialog").append('<lable>' + value.lable + '</lable>'+'<br>' ,
+	                    	$("#detailDataFormDialog").append('<lable>' + value.id + '</lable>'+'<br>' ,
 	    	                    	'<lable> Text' +'<input class="form-control" type="text" value=' + '"' + value.textInput + '"' + '>'+ '</lable>');
 	    	                    }	
 	                    });
