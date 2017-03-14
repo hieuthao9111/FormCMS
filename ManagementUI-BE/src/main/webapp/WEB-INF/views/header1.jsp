@@ -29,6 +29,7 @@
 <script src="<c:url value="/resources/mytheme/js/bootstrap.min.js" />"></script>
 <script src="<c:url value="/resources/mytheme/js/jquery-ui.min.js" />"></script>
 <script src="<c:url value="../resources/mytheme/js/project.js" />"></script>
+<script src="<c:url value="../resources/mytheme/js/fileupload.js" />"></script>
 <script src="<c:url value="../resources/mytheme/js/formcmsangular.js" />"></script>
 <script src="<c:url value="../resources/mytheme/js/jquery.simplePagination.js" />"></script>
 <script src="<c:url value="../resources/mytheme/js/jquery.dataTables.min.js" />"></script>

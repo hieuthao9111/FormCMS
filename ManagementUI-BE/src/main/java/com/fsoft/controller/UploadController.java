@@ -2,11 +2,16 @@ package com.fsoft.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.HashMap;
+import java.util.Map;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,8 +19,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fsoft.entity.FileUpload;
+import com.fsoft.service.FileUploadService;
+
 @Controller
 public class UploadController {
+	@Autowired
+	private FileUploadService fileUploadService;
+	
 	private static final Logger logger = LoggerFactory
             .getLogger(UploadController.class);
     /**
@@ -23,7 +34,7 @@ public class UploadController {
      */
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
     public @ResponseBody
-    ModelAndView uploadFileHandler(@RequestParam("name") String name,
+    ModelAndView uploadFileHandler(
             @RequestParam("file") MultipartFile file, Model model) {
         if (!file.isEmpty()) {
             try {
@@ -48,7 +59,7 @@ public class UploadController {
                
             }
         }
-        return new ModelAndView("uploadFile");
+        return new ModelAndView("loadPicture");
     }
     /**
      * Upload multiple file using Spring Controller
@@ -66,7 +77,7 @@ public class UploadController {
             try {
                 byte[] bytes = file.getBytes();
                 // Creating the directory to store file
-                String rootPath = System.getProperty("D:\\Work\\FormCMS\\ManagementUI-BE\\src\\main\\webapp\\upload");
+                String rootPath = System.getProperty("user.dir");
                 File dir = new File(rootPath + File.separator + "tmpFiles");
                 if (!dir.exists())
                     dir.mkdirs();
@@ -91,5 +102,21 @@ public class UploadController {
 	public ModelAndView upload() {
 		return new ModelAndView("uploadFile");
 	}
+    @RequestMapping(value = "/addFile" , method = RequestMethod.POST , produces = "application/json")
+    @ResponseBody
+    public Object addFile(@RequestBody FileUpload fileUpload){
+    	Map<String, Object> result = new HashMap<String, Object>();
+    		result.put("startus", "ok");
+    		result.put("fileUpload", fileUploadService.addUrl(fileUpload));
+    	return result;
+    }
+    @RequestMapping(value = "/showFile", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> getAllPicture(){
+    	Map<String, Object> result = new HashMap<>();
+    	result.put("fileUpload", fileUploadService.getAllPicture());
+		return result;
+    	
+    }
 
 }

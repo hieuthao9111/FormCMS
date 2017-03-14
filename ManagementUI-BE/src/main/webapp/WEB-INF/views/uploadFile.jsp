@@ -2,17 +2,14 @@
 <%@ page session="false" %>
 <html>
 <head>
-<title>Upload File Request Page</title>
+<c:import url="header1.jsp" />
 </head>
 <body>
     <form method="POST" action="uploadFile" enctype="multipart/form-data">
         File to upload: <input type="file" name="file"><br />
-        Name: <input type="text" name="name"><br /> <br />
-        <input id = "btnAddFile" type="submit" value="Upload"> Press here to upload the file!
+        Name: <input id = "nameFile" type="text"><br /> <br />
+        <input type="submit" value="Upload"> Press here to upload the file!
     </form>
-    <input type = "text" value="${file}">
-    <center>
-    <h1>${startus}</h1>
-     
+    
 </body>
 </html>

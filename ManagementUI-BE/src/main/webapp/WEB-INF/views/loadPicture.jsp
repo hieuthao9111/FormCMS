@@ -9,9 +9,15 @@
 </head>
 <body>
 <div>
-<input type = "text" value="${file}">
     <center>
-    <h1>"${startus}"</h1>
+    <input id = "URLFile" type = "text" value="${file}">
+    <input id = "btnShowPicture" type="submit" value="Show picture"> Press here to upload the file!
+    <div id = "loadPicture"></div>
+    <div id = "uploadFileTpl" style = "display: none">
+    <!--{{#fileUpload}}-->
+    	<img alt="" src="file://{{pathUrl}">
+    <!--{{/fileUpload}}-->	
+    </div>
     </center>
 </div>    
 </body>
