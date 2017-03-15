@@ -41,7 +41,7 @@ public class UploadController {
                 byte[] bytes = file.getBytes();
                 // Creating the directory to store file
                 String rootPath = System.getProperty("user.dir");
-                File dir = new File(rootPath + File.separator + "upload");
+                File dir = new File(rootPath + File.separator + "src\\main\\webapp\\resources\\upload");
                 if (!dir.exists())
                     dir.mkdirs();
                 // Create the file on server

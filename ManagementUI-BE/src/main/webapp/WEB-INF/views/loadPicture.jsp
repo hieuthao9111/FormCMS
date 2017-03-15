@@ -9,15 +9,22 @@
 </head>
 <body>
 <div>
+<img alt="" src="../resources/mytheme/css/images/test.jpg">
     <center>
     <input id = "URLFile" type = "text" value="${file}">
     <input id = "btnShowPicture" type="submit" value="Show picture"> Press here to upload the file!
     <div id = "loadPicture"></div>
+    
     <div id = "uploadFileTpl" style = "display: none">
     <!--{{#fileUpload}}-->
-    	<img alt="" src="file://{{pathUrl}">
+    	<img alt="" src="D:\Work\FormCMS\ManagementUI-BE\src\main\webapp\resources\mytheme\css\images\test.jpg">
     <!--{{/fileUpload}}-->	
     </div>
+    
+    <div id="gallery">
+    Iamge
+    </div>
+    
     </center>
 </div>    
 </body>

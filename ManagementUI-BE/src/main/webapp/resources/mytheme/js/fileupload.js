@@ -23,6 +23,7 @@ $("#btnAddFile").click(function() {
 				        });
 });
 $("#btnShowPicture").click(function() {
+	$('#gallery').css("background-image", "src='D:\Work\FormCMS\ManagementUI-BE\src\main\webapp\resources\mytheme\css\images\test.jpg'");
 		$.ajax({
             dataType: "json",
             type: 'Get',
